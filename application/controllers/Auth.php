@@ -5,10 +5,10 @@ class Auth extends CI_Controller {
 
 	public function login()
 	{
-		if($this->session->has_userdata('auth') === TRUE AND $this->auth_model->user_token_exists($this->session->userdata('auth')['user_token']) === TRUE)
+		/*if($this->session->has_userdata('auth') !== FALSE AND $this->auth_model->user_token_exists($this->session->userdata('auth')['user_token']) !== FALSE)
 		{
 			redirect('');
-		}
+		}*/
 
 		$this->session->set_tempdata('login_attempt', $this->session->tempdata('login_attempt') ?? 0, $this->login_attempt_expire);
 
@@ -55,7 +55,6 @@ class Auth extends CI_Controller {
 				$this->session->set_flashdata(
 					'alert',
 					array(
-						'icon' => 'x',
 						'status' => 'danger',
 						'text' => 'Nama pengguna tidak ditemukan'
 					)
@@ -70,7 +69,6 @@ class Auth extends CI_Controller {
 				$this->session->set_flashdata(
 					'alert',
 					array(
-						'icon' => 'x',
 						'status' => 'danger',
 						'text' => 'Kata sandi pengguna salah'
 					)

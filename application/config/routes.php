@@ -52,6 +52,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['masuk'] = 'auth/login';
 $route['keluar'] = 'auth/logout';
 
+$route['anggota'] = 'member/index';
+$route['anggota/tambah'] = 'member/create';
+$route['anggota/ubah/(:any)'] = 'member/update/$1';
+$route['anggota/hapus/(:any)'] = 'member/delete/$1';
+
 $route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;

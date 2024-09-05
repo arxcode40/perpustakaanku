@@ -1,81 +1,56 @@
 <nav class="bg-body-tertiary border-bottom navbar navbar-expand-lg shadow sticky-top">
 	<div class="container">
+		<!-- Navbar Header -->
 		<a class="fw-medium navbar-brand text-primary" href="/">PerpustakaanKu</a>
 		<button class="navbar-toggler" data-bs-target="#navbarCollapse" data-bs-toggle="collapse" type="button">
 			<span class="navbar-toggler-icon"></span>
 		</button>
+
+		<!-- Navbar Body -->
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="ms-auto navbar-nav">
+				<!-- Dashboard Link -->
 				<li class="nav-item">
-					<a class="<?= $this->uri->segment(1) === NULL ? 'active' : '' ?> nav-link" href="/">
-						<i class="bi bi-speedometer"></i>
-						Dasbor
-					</a>
+					<a class="<?= $this->uri->segment(1) === NULL ? 'active' : '' ?> nav-link" href="/">Dasbor</a>
 				</li>
+
+				<!-- Data Master Dropdown -->
 				<li class="dropdown nav-item">
-					<a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">
-						<i class="bi bi-database-fill"></i>
-						Data Master
-					</a>
+					<a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">Data Master</a>
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li>
-							<h6 class="dropdown-header">
-								<i class="bi bi-database-fill"></i>
-								Data Master
-							</h6>
+							<h6 class="dropdown-header">Data Master</h6>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/anggota/">
-								<i class="bi bi-person-fill"></i>
-								Data Anggota
-							</a>
+							<a class="dropdown-item" href="/anggota/">Data anggota</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/buku/">
-								<i class="bi bi-book-half"></i>
-								Data Buku
-							</a>
+							<a class="dropdown-item" href="/buku/">Data buku</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/peminjaman/">
-								<i class="bi bi-box-arrow-up"></i>
-								Data Peminjaman
-							</a>
+							<a class="dropdown-item" href="/peminjaman/">Data peminjaman</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/pengembalian/">
-								<i class="bi bi-box-arrow-in-down"></i>
-								Data Pengembalian
-							</a>
+							<a class="dropdown-item" href="/pengembalian/">Data pengembalian</a>
 						</li>
 					</ul>
 				</li>
+
+				<!-- Profile Dropdown -->
 				<li class="dropdown nav-item">
-					<a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">
-						<i class="bi bi-person-circle"></i>
-						Administrator
-					</a>
+					<a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">Administrator</a>
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li>
-							<h6 class="dropdown-header">
-								<i class="bi bi-person-circle"></i>
-								Administrator
-							</h6>
+							<h6 class="dropdown-header">Administrator</h6>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/profil/">
-								<i class="bi bi-person-fill"></i>
-								Profil Saya
-							</a>
+							<a class="dropdown-item" href="/profil/">Profil saya</a>
 						</li>
 						<li>
 							<hr class="dropdown-divider" />
 						</li>
 						<li>
-							<a class="dropdown-item" href="/keluar/">
-								<i class="bi bi-box-arrow-right"></i>
-								Keluar
-							</a>
+							<a class="dropdown-item" href="/keluar/">Keluar</a>
 						</li>
 					</ul>
 				</li>
