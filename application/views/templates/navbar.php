@@ -8,30 +8,30 @@
 
 		<!-- Navbar Body -->
 		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<ul class="ms-auto navbar-nav">
+			<ul class="ms-auto nav nav-pills">
 				<!-- Dashboard Link -->
 				<li class="nav-item">
-					<a class="<?= $this->uri->segment(1) === NULL ? 'active' : '' ?> nav-link" href="/">Dasbor</a>
+					<a class="<?= $this->uri->segment(1) !== NULL ?: 'active' ?> nav-link" href="/">Dasbor</a>
 				</li>
 
 				<!-- Data Master Dropdown -->
 				<li class="dropdown nav-item">
-					<a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">Data Master</a>
+					<a class="<?= in_array($this->uri->segment(1), array('anggota', 'buku', 'peminjaman', 'pengembalian')) === FALSE ?: 'active' ?> dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">Data Master</a>
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li>
 							<h6 class="dropdown-header">Data Master</h6>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/anggota/">Data anggota</a>
+							<a class="<?= $this->uri->segment(1) !== 'anggota' ?: 'active' ?> dropdown-item" href="/anggota/">Data anggota</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/buku/">Data buku</a>
+							<a class="<?= $this->uri->segment(1) !== 'buku' ?: 'active' ?> dropdown-item" href="/buku/">Data buku</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/peminjaman/">Data peminjaman</a>
+							<a class="<?= $this->uri->segment(1) !== 'peminjaman' ?: 'active' ?> dropdown-item" href="/peminjaman/">Data peminjaman</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/pengembalian/">Data pengembalian</a>
+							<a class="<?= $this->uri->segment(1) !== 'pengembalian' ?: 'active' ?> dropdown-item" href="/pengembalian/">Data pengembalian</a>
 						</li>
 					</ul>
 				</li>

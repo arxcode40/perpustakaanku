@@ -57,6 +57,21 @@ $route['anggota/tambah'] = 'member/create';
 $route['anggota/ubah/(:any)'] = 'member/update/$1';
 $route['anggota/hapus/(:any)'] = 'member/delete/$1';
 
+$route['buku'] = 'book/index';
+$route['buku/tambah'] = 'book/create';
+$route['buku/ubah/(:any)'] = 'book/update/$1';
+$route['buku/hapus/(:any)'] = 'book/delete/$1';
+
+$route['peminjaman'] = 'booklending/index';
+$route['peminjaman/tambah'] = 'booklending/create';
+$route['peminjaman/ubah/(:any)'] = 'booklending/update/$1';
+$route['peminjaman/hapus/(:any)'] = 'booklending/delete/$1';
+
+$route['pengembalian'] = 'bookreturn/index';
+$route['pengembalian/tambah/(:any)'] = 'bookreturn/create/$1';
+$route['pengembalian/ubah/(:any)'] = 'bookreturn/update/$1';
+$route['pengembalian/hapus/(:any)'] = 'bookreturn/delete/$1';
+
 $route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;

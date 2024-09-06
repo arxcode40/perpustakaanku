@@ -1,4 +1,4 @@
-SetEnv CI_ENV production
+SetEnv CI_ENV development
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f

@@ -9,7 +9,7 @@
 				<li class="breadcrumb-item">
 					<a href="/">Beranda</a>
 				</li>
-				<li class="active breadcrumb-item">Data anggota</li>
+				<li class="active breadcrumb-item">Data peminjaman</li>
 			</ol>
 		</nav>
 
@@ -17,8 +17,8 @@
 		<div class="card shadow">
 			<!-- Card Header -->
 			<div class="align-items-center card-header d-flex">
-				<h5 class="mb-0 me-auto">Tabel anggota</h5>
-				<a class="btn btn-primary btn-sm shadow" href="/anggota/tambah/">Tambah</a>
+				<h5 class="mb-0 me-auto">Tabel peminjaman</h5>
+				<a class="btn btn-primary btn-sm shadow" href="/peminjaman/tambah/">Tambah</a>
 			</div>
 
 			<!-- Card Body -->
@@ -31,9 +31,9 @@
 								<th class="text-start" scope="col">#</th>
 								<th scope="col">Kode</th>
 								<th scope="col">Nama</th>
-								<th scope="col">Jenis Kelamin</th>
-								<th scope="col">Email</th>
-								<th class="text-start" scope="col">No. Telp</th>
+								<th scope="col">Judul</th>
+								<th scope="col">Tanggal pinjam</th>
+								<th scope="col">Tanggal kembali</th>
 								<th scope="col">Aksi</th>
 							</tr>
 						</thead>
@@ -43,14 +43,14 @@
 							<?php for($i=0;$i<20;$i++): ?>
 							<tr class="align-middle">
 								<th class="text-start" scope="row"><?= $i + 1 ?></th>
-								<td>M0001</td>
+								<td>L0001</td>
 								<td>Arya Putra Sadewa</td>
-								<td>Laki-laki</td>
-								<td>aryaputrasadewa40@gmail.com</td>
-								<td class="text-start">0895339792382</td>
+								<td>Domestic na Kanojo</td>
+								<td><?= mdate('%d %M %Y') ?></td>
+								<td><?= mdate('%d %M %Y') ?></td>
 								<td class="text-nowrap">
-									<a class="btn btn-primary btn-sm shadow" href="/anggota/ubah/0">Ubah</a>
-									<a class="btn btn-danger btn-sm shadow" href="/anggota/hapus/0">Hapus</a>
+									<a class="btn btn-primary btn-sm shadow" href="/peminjaman/ubah/0">Ubah</a>
+									<a class="btn btn-danger btn-sm shadow" href="/peminjaman/hapus/0">Hapus</a>
 								</td>
 							</tr>
 							<?php endfor ?>

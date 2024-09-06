@@ -5,7 +5,7 @@
 			<h5 class="mb-md-0 text-primary">PerpustakaanKu</h5>
 
 			<!-- Copyright -->
-			<p class="mb-0">Copyright &copy; <?= mdate('%Y') ?> ArX Code. All Rights Reserved.</p>
+			<p class="mb-0">Copyright &copy; <?= mdate('%Y') ?> PerpustakaanKu. All Rights Reserved.</p>
 		</div>
 	</div>
 </footer>
