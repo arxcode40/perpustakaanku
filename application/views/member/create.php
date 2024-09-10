@@ -1,30 +1,45 @@
 <main class="flex-grow-1">
 	<div class="container py-3">
-		<!-- Form Alert -->
+		<!-- Form alert -->
 		<?php $this->load->view('templates/alert', array('alert' => $this->session->flashdata('alert'))) ?>
 		
 		<!-- Breadcrumb -->
 		<nav class="mb-3">
 			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow">
 				<li class="breadcrumb-item">
-					<a href="/">Beranda</a>
+					<a class="link-underline link-underline-opacity-0" href="/">
+						<i class="bi bi-house-door-fill"></i>
+						Beranda
+					</a>
 				</li>
 				<li class="breadcrumb-item">
-					<a href="/anggota/">Data anggota</a>
+					<a class="link-underline link-underline-opacity-0" href="/anggota/">
+						<i class="bi bi-person-standing"></i>
+						Data anggota
+					</a>
 				</li>
-				<li class="active breadcrumb-item">Tambah data anggota</li>
+				<li class="active breadcrumb-item">
+					<i class="bi bi-plus-lg"></i>
+					Tambah data anggota
+				</li>
 			</ol>
 		</nav>
 
-		<!-- Member DataTable -->
-		<div class="card shadow">
-			<!-- Card Header -->
+		<!-- Member create form -->
+		<?= form_open(uri_string(), array('class' => 'card shadow')) ?>
+			<!-- Card header -->
 			<div class="align-items-center card-header d-flex">
-				<h5 class="mb-0 me-auto">Tambah data anggota</h5>
-				<a class="btn btn-secondary btn-sm shadow" href="/anggota/">Kembali</a>
+				<h5 class="mb-0 me-auto">
+					<i class="bi bi-plus-lg"></i>
+					Tambah data anggota
+				</h5>
+				<a class="btn btn-secondary btn-sm shadow" href="/anggota/">
+					<i class="bi bi-arrow-left"></i>
+					<span class="d-none d-sm-inline">Kembali</span>
+				</a>
 			</div>
 
-			<!-- Card Body -->
+			<!-- Card body -->
 			<div class="card-body">
 				<div class="mb-3 row">
 					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberCode">
@@ -33,7 +48,7 @@
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control" disabled="disabled" id="memberCode" type="text" value="<?= 'M0001' ?>" />
+						<input class="form-control" disabled="disabled" id="memberCode" type="text" value="<?= html_escape($last_id) ?>" />
 					</div>
 				</div>
 				<div class="mb-3 row">
@@ -43,7 +58,7 @@
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input autofocus="autofocus" class="form-control <?= form_error('name') === '' ?: 'is-invalid' ?>" id="memberName" name="name" placeholder="Masukkan nama anggota" type="text" value="<?= set_value('name') ?>" />
+						<input autofocus="autofocus" class="form-control <?= form_error('name') === '' ?: 'is-invalid' ?>" id="memberName" name="name" placeholder="Masukkan nama anggota" type="text" value="<?= html_escape(set_value('name')) ?>" />
 						<?= form_error('name', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
@@ -55,11 +70,11 @@
 					</legend>
 					<div class="col-md-9 col-lg-10">
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" <?= set_radio('gender', 'Male', TRUE) ?> id="memberGenderMale" name="gender" type="radio" value="Male" />
+							<input class="form-check-input" <?= set_radio('gender', 'Laki-laki', TRUE) ?> id="memberGenderMale" name="gender" type="radio" value="Laki-laki" />
 							<label class="form-check-label" for="memberGenderMale">Laki-laki</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" <?= set_radio('gender', 'Female') ?> id="memberGenderFemale" name="gender" type="radio" value="Female" />
+							<input class="form-check-input" <?= set_radio('gender', 'Perempuan') ?> id="memberGenderFemale" name="gender" type="radio" value="Perempuan" />
 							<label class="form-check-label" for="memberGenderFemale">Perempuan</label>
 						</div>
 						<?= form_error('gender', '<div class="invalid-feedback">', '</div>') ?>
@@ -72,7 +87,7 @@
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control <?= form_error('email') === '' ?: 'is-invalid' ?>" id="memberEmail" name="email" placeholder="Masukkan email anggota" type="email" value="<?= set_value('email') ?>" />
+						<input class="form-control <?= form_error('email') === '' ?: 'is-invalid' ?>" id="memberEmail" name="email" placeholder="Masukkan email anggota" type="email" value="<?= html_escape(set_value('email')) ?>" />
 						<?= form_error('email', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
@@ -83,7 +98,7 @@
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control <?= form_error('phone') === '' ?: 'is-invalid' ?>" id="memberPhone" name="phone" placeholder="Masukkan nomor telepon" type="tel" value="<?= set_value('phone') ?>" />
+						<input class="form-control <?= form_error('phone') === '' ?: 'is-invalid' ?>" id="memberPhone" name="phone" placeholder="Masukkan nomor telepon" type="tel" value="<?= html_escape(set_value('phone')) ?>" />
 						<?= form_error('phone', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
@@ -93,17 +108,23 @@
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<textarea class="form-control <?= form_error('address') === '' ?: 'is-invalid' ?>" id="memberAddress" name="address" placeholder="Masukkan alamat anggota"></textarea>
+						<textarea class="form-control <?= form_error('address') === '' ?: 'is-invalid' ?>" id="memberAddress" name="address" placeholder="Masukkan alamat anggota"><?= html_escape(set_value('address')) ?></textarea>
 						<?= form_error('phone', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 			</div>
 
-			<!-- Card Footer -->
+			<!-- Card footer -->
 			<div class="card-footer">
-				<button class="btn btn-primary shadow" type="submit">Tambah</button>
-				<button class="btn btn-secondary shadow" type="reset">Reset</button>
+				<button class="btn btn-primary shadow" type="submit">
+					<i class="bi bi-plus-lg"></i>
+					Tambah
+				</button>
+				<button class="btn btn-secondary shadow" type="reset">
+					<i class="bi bi-x-lg"></i>
+					Reset
+				</button>
 			</div>
-		</div>
+		<?= form_close() ?>
 	</div>
 </main>

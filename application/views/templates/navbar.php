@@ -1,56 +1,100 @@
 <nav class="bg-body-tertiary border-bottom navbar navbar-expand-lg shadow sticky-top">
 	<div class="container">
-		<!-- Navbar Header -->
-		<a class="fw-medium navbar-brand text-primary" href="/">PerpustakaanKu</a>
+		<!-- Navbar header -->
+		<a class="align-items-center d-flex navbar-brand" href="/">
+			<img alt="Logo PerpustakaanKu" loading="lazy" src="/favicon.svg" width="24">
+			<span class="fw-medium ms-2 text-primary"><?= $settings['application_name'] ?></span>
+		</a>
 		<button class="navbar-toggler" data-bs-target="#navbarCollapse" data-bs-toggle="collapse" type="button">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<!-- Navbar Body -->
+		<!-- Navbar body -->
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<ul class="ms-auto nav nav-pills">
-				<!-- Dashboard Link -->
+				<!-- Dashboard link -->
 				<li class="nav-item">
-					<a class="<?= $this->uri->segment(1) !== NULL ?: 'active' ?> nav-link" href="/">Dasbor</a>
+					<a class="<?= $this->uri->segment(1) !== NULL ?: 'active' ?> nav-link" href="/">
+						<i class="bi bi-speedometer"></i>
+						Dasbor
+					</a>
 				</li>
 
-				<!-- Data Master Dropdown -->
+				<!-- Data master dropdown -->
 				<li class="dropdown nav-item">
-					<a class="<?= in_array($this->uri->segment(1), array('anggota', 'buku', 'peminjaman', 'pengembalian')) === FALSE ?: 'active' ?> dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">Data Master</a>
+					<a class="<?= in_array($this->uri->segment(1), array('anggota', 'buku', 'peminjaman', 'pengembalian')) === FALSE ?: 'active' ?> dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">
+						<i class="bi bi-database-fill"></i>
+						Data Master
+					</a>
+
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li>
-							<h6 class="dropdown-header">Data Master</h6>
+							<h6 class="dropdown-header">
+							<i class="bi bi-database-fill"></i>
+								Data Master
+							</h6>
 						</li>
 						<li>
-							<a class="<?= $this->uri->segment(1) !== 'anggota' ?: 'active' ?> dropdown-item" href="/anggota/">Data anggota</a>
+							<a class="<?= $this->uri->segment(1) !== 'anggota' ?: 'active' ?> dropdown-item" href="/anggota/">
+								<i class="bi bi-person-standing"></i>
+								Data anggota
+							</a>
 						</li>
 						<li>
-							<a class="<?= $this->uri->segment(1) !== 'buku' ?: 'active' ?> dropdown-item" href="/buku/">Data buku</a>
+							<a class="<?= $this->uri->segment(1) !== 'buku' ?: 'active' ?> dropdown-item" href="/buku/">
+								<i class="bi bi-book-half"></i>
+								Data buku
+							</a>
 						</li>
 						<li>
-							<a class="<?= $this->uri->segment(1) !== 'peminjaman' ?: 'active' ?> dropdown-item" href="/peminjaman/">Data peminjaman</a>
+							<a class="<?= $this->uri->segment(1) !== 'peminjaman' ?: 'active' ?> dropdown-item" href="/peminjaman/">
+								<i class="bi bi-box-arrow-up"></i>
+								Data peminjaman
+							</a>
 						</li>
 						<li>
-							<a class="<?= $this->uri->segment(1) !== 'pengembalian' ?: 'active' ?> dropdown-item" href="/pengembalian/">Data pengembalian</a>
+							<a class="<?= $this->uri->segment(1) !== 'pengembalian' ?: 'active' ?> dropdown-item" href="/pengembalian/">
+								<i class="bi bi-box-arrow-in-down"></i>
+								Data pengembalian
+							</a>
 						</li>
 					</ul>
 				</li>
 
-				<!-- Profile Dropdown -->
+				<!-- Profile dropdown -->
 				<li class="dropdown nav-item">
-					<a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">Administrator</a>
+					<a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">
+						<i class="bi bi-person-circle"></i>
+						Administrator
+					</a>
+
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li>
-							<h6 class="dropdown-header">Administrator</h6>
+							<h6 class="dropdown-header">
+								<i class="bi bi-person-circle"></i>
+								Administrator
+							</h6>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/profil/">Profil saya</a>
+							<a class="dropdown-item" href="/profil/">
+								<i class="bi bi-person-gear"></i>
+								Profil saya
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="/pengaturan/">
+								<i class="bi bi-gear-fill"></i>
+								pengaturan
+							</a>
 						</li>
 						<li>
 							<hr class="dropdown-divider" />
 						</li>
 						<li>
-							<a class="dropdown-item" href="/keluar/">Keluar</a>
+							<a class="dropdown-item" href="/keluar/">
+								<i class="bi bi-box-arrow-right"></i>
+								Keluar
+							</a>
 						</li>
 					</ul>
 				</li>

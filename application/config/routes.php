@@ -55,7 +55,7 @@ $route['keluar'] = 'auth/logout';
 $route['anggota'] = 'member/index';
 $route['anggota/tambah'] = 'member/create';
 $route['anggota/ubah/(:any)'] = 'member/update/$1';
-$route['anggota/hapus/(:any)'] = 'member/delete/$1';
+$route['anggota/hapus']['POST'] = 'member/delete';
 
 $route['buku'] = 'book/index';
 $route['buku/tambah'] = 'book/create';

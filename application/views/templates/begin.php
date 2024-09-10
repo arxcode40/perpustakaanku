@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="id">
+<html data-bs-theme="<?= $settings['application_theme'] ?>" lang="id">
 <head>
 	<!-- Metadata -->
 	<meta charset="utf-8" />
@@ -8,10 +8,10 @@
 	<meta content="light" name="color-scheme" />
 	<meta content="#0d6efd" name="theme-color" />
 
-	<!-- Browser Tab Display -->
+	<!-- Browser tab display -->
 	<link href="/favicon.svg" rel="apple-touch-icon">
 	<link href="/favicon.svg" rel="icon shortcut" type="image/x-icon">
-	<title><?= $title ?> | PerpustakaanKu</title>
+	<title><?= $title ?> | <?= html_escape($settings['application_name']) ?></title>
 
 	<!-- Stylesheet -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -20,4 +20,4 @@
 	<link href="https://cdn.jsdelivr.net/npm/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet" />
 	<link href="/assets/css/style.css" rel="stylesheet">
 </head>
-<body class="<?= $this->uri->segment(1) !== 'masuk' ? 'bg-body-secondary' : 'bg-primary bg-gradient' ?> d-flex flex-column min-dvh-100">
+<body class="<?= $this->uri->segment(1) !== 'masuk' ? ($settings['application_theme'] === 'dark' ?: 'bg-body-secondary') : 'bg-primary-subtle bg-gradient' ?> d-flex flex-column min-dvh-100">

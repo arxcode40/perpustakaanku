@@ -1,3 +1,5 @@
+php_value date.timezone 'Asia/Jakarta'
+
 SetEnv CI_ENV development
 
 RewriteEngine On

@@ -3,15 +3,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller {
 
+	private $settings;
+
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->settings = $this->setting_model->get();
+	}
+
+	private $login_attempts_expire = 60 * 1;
+
 	public function login()
 	{
-		/*if($this->session->has_userdata('auth') !== FALSE AND $this->auth_model->user_token_exists($this->session->userdata('auth')['user_token']) !== FALSE)
+		// Middleware
+		if($this->session->has_userdata('auth_token') !== FALSE)
 		{
-			redirect('');
-		}*/
+			if($this->auth_model->user_token_exists($this->session->userdata('auth_token')) !== FALSE) {
+				redirect('');
+			}
+		}
 
-		$this->session->set_tempdata('login_attempt', $this->session->tempdata('login_attempt') ?? 0, $this->login_attempt_expire);
+		$this->session->set_tempdata('login_attempts', $this->session->tempdata('login_attempts') ?? 0, $this->login_attempts_expire);
 
+		// Form validation rules
 		$this->form_validation->set_rules(
 			'username', 'nama pengguna',
 			array('max_length[16]', 'min_length[8]', 'regex_match[/^[a-z\d]+$/]', 'required', 'trim')
@@ -24,8 +39,10 @@ class Auth extends CI_Controller {
 			)
 		);
 
+		// Run validation
 		if ($this->form_validation->run() === FALSE)
 		{
+			$data['settings'] = $this->settings;
 			$data['title'] = 'Masuk';
 
 			$this->load->view('templates/begin', $data);
@@ -34,7 +51,8 @@ class Auth extends CI_Controller {
 		}
 		else
 		{
-			if ($this->session->tempdata('login_attempt') >= 2)
+			// Limit login attempts
+			if ($this->session->tempdata('login_attempts') >= 2)
 			{
 				$this->session->set_flashdata(
 					'alert',
@@ -50,11 +68,13 @@ class Auth extends CI_Controller {
 
 			$auth = $this->auth_model->attempt();
 
+			// Username check
 			if ($auth === NULL)
 			{
 				$this->session->set_flashdata(
 					'alert',
 					array(
+						'icon' => 'x',
 						'status' => 'danger',
 						'text' => 'Nama pengguna tidak ditemukan'
 					)
@@ -63,12 +83,14 @@ class Auth extends CI_Controller {
 				redirect(uri_string());
 			}
 
+			// Verify password
 			if (password_verify($this->input->post('password'), $auth['password']) === FALSE)
 			{
-				$this->session->set_tempdata('login_attempt', ($this->session->tempdata('login_attempt') + 1) ?? 1, $this->login_attempt_expire);
+				$this->session->set_tempdata('login_attempts', ($this->session->tempdata('login_attempts') + 1) ?? 1, $this->login_attempts_expire);
 				$this->session->set_flashdata(
 					'alert',
 					array(
+						'icon' => 'x',
 						'status' => 'danger',
 						'text' => 'Kata sandi pengguna salah'
 					)
@@ -77,14 +99,12 @@ class Auth extends CI_Controller {
 				redirect(uri_string());
 			}
 
-			$this->session->unset_tempdata('login_attempt');
-			$this->session->set_userdata(
-				'auth',
-				array(
-					'user_id' => $auth['user_id'],
-					'user_token' => $auth['user_token']
-				)
-			);
+			// Set auth
+			$this->session->unset_tempdata('login_attempts');
+
+			unset($auth['password']);
+			$auth['logged_at'] = mdate('%Y-%m-%d %H:%i:%s');
+			$this->session->set_userdata('auth_token', base64_encode(json_encode($auth)));
 
 			redirect('');
 		}
@@ -92,7 +112,8 @@ class Auth extends CI_Controller {
 
 	public function logout()
 	{
-		$this->session->unset_userdata('auth');
+		// Unset auth
+		$this->session->unset_userdata('auth_token');
 
 		redirect('masuk');
 	}
