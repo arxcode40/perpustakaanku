@@ -19,7 +19,7 @@
 			</ol>
 		</nav>
 
-		<!-- Member datatable -->
+		<!-- Members datatable -->
 		<div class="card shadow">
 			<!-- Card header -->
 			<div class="align-items-center card-header d-flex">
@@ -33,7 +33,7 @@
 						<span class="d-none d-sm-inline">Ekspor</span>
 					</button>
 
-					<!-- Export data -->
+					<!-- Export table -->
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li>
 							<h6 class="dropdown-header">
@@ -93,9 +93,9 @@
 						<!-- Table body -->
 						<tbody class="table-group-divider">
 							<?php $i = 1 ?>
-							<?php foreach($members as $member): ?>
+							<?php foreach ($members as $member): ?>
 								<tr class="align-middle">
-									<th class="text-start" scope="row"><?= $i ?></th>
+									<th class="text-start" scope="row"><?= $i++ ?></th>
 									<td><?= html_escape($member['member_id']) ?></td>
 									<td><?= html_escape($member['member_name']) ?></td>
 									<td><?= html_escape($member['member_gender']) ?></td>
@@ -114,7 +114,6 @@
 										<?= form_close() ?>
 									</td>
 								</tr>
-							<?php $i++ ?>
 							<?php endforeach ?>
 						</tbody>
 					</table>

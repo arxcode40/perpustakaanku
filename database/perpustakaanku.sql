@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 10, 2024 at 03:46 AM
+-- Generation Time: Sep 11, 2024 at 02:55 AM
 -- Server version: 9.0.0
 -- PHP Version: 8.3.10
 
@@ -38,6 +38,13 @@ CREATE TABLE `books` (
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`book_id`, `book_title`, `book_year`, `book_author`, `book_publisher`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('B0000001', 'Domestic na Kanojo', '2014', 'Kei Sasuga', 'Majalah Shounen', '2024-09-11 00:27:32', '2024-09-11 00:27:32', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -54,6 +61,13 @@ CREATE TABLE `lendings` (
   `updated_at` timestamp NOT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `lendings`
+--
+
+INSERT INTO `lendings` (`lending_id`, `member_id`, `book_id`, `lending_start`, `lending_end`, `created_at`, `updated_at`, `deleted_at`) VALUES
+('L0000001', 'M0000001', 'B0000001', '2024-09-11', '2024-09-11', '2024-09-11 01:55:33', '2024-09-11 01:55:33', NULL);
 
 -- --------------------------------------------------------
 
@@ -78,7 +92,7 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`member_id`, `member_name`, `member_gender`, `member_email`, `member_phone`, `member_address`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('M0000001', 'Arya Putra Sadewa', 'Laki-laki', 'aryaputrasadewa40@gmail.com', '0895339792382', 'Legok, Kab. Tangerang.', '2024-09-10 02:31:38', '2024-09-10 03:44:15', NULL);
+('M0000001', 'Arya Putra Sadewa', 'Laki-laki', 'aryaputrasadewa40@gmail.com', '0895339792382', 'Legok, Kab. Tangerang.', '2024-09-10 02:31:38', '2024-09-11 00:27:54', NULL);
 
 -- --------------------------------------------------------
 

@@ -60,12 +60,12 @@ $route['anggota/hapus']['POST'] = 'member/delete';
 $route['buku'] = 'book/index';
 $route['buku/tambah'] = 'book/create';
 $route['buku/ubah/(:any)'] = 'book/update/$1';
-$route['buku/hapus/(:any)'] = 'book/delete/$1';
+$route['buku/hapus']['POST'] = 'book/delete';
 
 $route['peminjaman'] = 'booklending/index';
 $route['peminjaman/tambah'] = 'booklending/create';
 $route['peminjaman/ubah/(:any)'] = 'booklending/update/$1';
-$route['peminjaman/hapus/(:any)'] = 'booklending/delete/$1';
+$route['peminjaman/hapus']['POST'] = 'booklending/delete';
 
 $route['pengembalian'] = 'bookreturn/index';
 $route['pengembalian/tambah/(:any)'] = 'bookreturn/create/$1';

@@ -3,7 +3,7 @@
 		<!-- Navbar header -->
 		<a class="align-items-center d-flex navbar-brand" href="/">
 			<img alt="Logo PerpustakaanKu" loading="lazy" src="/favicon.svg" width="24">
-			<span class="fw-medium ms-2 text-primary"><?= $settings['application_name'] ?></span>
+			<span class="fw-medium ms-2"><?= html_escape($settings['application_name']) ?></span>
 		</a>
 		<button class="navbar-toggler" data-bs-target="#navbarCollapse" data-bs-toggle="collapse" type="button">
 			<span class="navbar-toggler-icon"></span>

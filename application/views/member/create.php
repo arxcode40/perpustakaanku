@@ -43,8 +43,7 @@
 			<div class="card-body">
 				<div class="mb-3 row">
 					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberCode">
-						Kode anggota
-						<b class="text-danger">*</b>
+						Kode anggota<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
@@ -53,8 +52,7 @@
 				</div>
 				<div class="mb-3 row">
 					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberName">
-						Nama anggota
-						<b class="text-danger">*</b>
+						Nama anggota<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
@@ -64,8 +62,7 @@
 				</div>
 				<fieldset class="mb-3 row">
 					<legend class="col-md-3 col-lg-2 col-form-label d-md-flex pt-0">
-						Jenis kelamin
-						<b class="text-danger">*</b>
+						Jenis kelamin<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</legend>
 					<div class="col-md-9 col-lg-10">
@@ -82,8 +79,7 @@
 				</fieldset>
 				<div class="mb-3 row">
 					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberEmail">
-						Email anggota
-						<b class="text-danger">*</b>
+						Email anggota<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
@@ -93,8 +89,7 @@
 				</div>
 				<div class="mb-3 row">
 					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberPhone">
-						Nomor telepon
-						<b class="text-danger">*</b>
+						Nomor telepon<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">

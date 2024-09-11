@@ -1,98 +1,118 @@
 <main class="flex-grow-1">
 	<div class="container py-3">
-		<!-- Form Alert -->
+		<!-- Form alert -->
 		<?php $this->load->view('templates/alert', array('alert' => $this->session->flashdata('alert'))) ?>
 		
 		<!-- Breadcrumb -->
 		<nav class="mb-3">
 			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow">
 				<li class="breadcrumb-item">
-					<a href="/">Beranda</a>
+					<a class="link-underline link-underline-opacity-0" href="/">
+						<i class="bi bi-house-door-fill"></i>
+						Beranda
+					</a>
 				</li>
 				<li class="breadcrumb-item">
-					<a href="/peminjaman/">Data peminjaman</a>
+					<a class="link-underline link-underline-opacity-0" href="/peminjaman/">
+						<i class="bi bi-box-arrow-up"></i>
+						Data peminjaman
+					</a>
 				</li>
-				<li class="active breadcrumb-item">Tambah data peminjaman</li>
+				<li class="active breadcrumb-item">
+					<i class="bi bi-plus-lg"></i>
+					Tambah data peminjaman
+				</li>
 			</ol>
 		</nav>
 
-		<!-- Member DataTable -->
-		<div class="card shadow">
-			<!-- Card Header -->
+		<!-- Lending create form -->
+		<?= form_open(uri_string(), array('class' => 'card shadow')) ?>
+			<!-- Card header -->
 			<div class="align-items-center card-header d-flex">
-				<h5 class="mb-0 me-auto">Tambah data peminjaman</h5>
-				<a class="btn btn-secondary btn-sm shadow" href="/peminjaman/">Kembali</a>
+				<h5 class="mb-0 me-auto">
+					<i class="bi bi-plus-lg"></i>
+					Tambah data peminjaman
+				</h5>
+				<a class="btn btn-secondary btn-sm shadow" href="/peminjaman/">
+					<i class="bi bi-arrow-left"></i>
+					<span class="d-none d-sm-inline">Kembali</span>
+				</a>
 			</div>
 
-			<!-- Card Body -->
+			<!-- Card body -->
 			<div class="card-body">
 				<div class="mb-3 row">
 					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="lendingCode">
-						Kode peminjaman
-						<b class="text-danger">*</b>
+						Kode peminjaman<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control" disabled="disabled" id="lendingCode" type="text" value="<?= 'L0001' ?>" />
+						<input class="form-control" disabled="disabled" id="lendingCode" type="text" value="<?= html_escape($last_id) ?>" />
 					</div>
 				</div>
 				<div class="mb-3 row">
 					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberName">
-						Nama anggota
-						<b class="text-danger">*</b>
+						Nama anggota<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
 						<select autofocus="autofocus" class="form-select <?= form_error('name') === '' ?: 'is-invalid' ?>" id="memberName" name="name">
-							<option>Pilh nama anggota</option>
-							<option <?= set_select('name', 'M0001') ?> value="M0001">Arya Putra Sadewa</option>
+							<option value="">Pilh nama anggota</option>
+							<?php foreach ($members as $member): ?>
+								<option <?= set_select('name', html_escape($member['member_id'])) ?> value="<?= html_escape($member['member_id']) ?>"><?= html_escape($member['member_name']) ?></option>
+							<?php endforeach ?>
 						</select>
 						<?= form_error('name', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 				<div class="mb-3 row">
 					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="bookTitle">
-						Judul buku
-						<b class="text-danger">*</b>
+						Judul buku<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
 						<select class="form-select <?= form_error('title') === '' ?: 'is-invalid' ?>" id="bookTitle" name="title">
-							<option>Pilh judul buku</option>
-							<option <?= set_select('title', 'B0001') ?> value="B0001">Domestic na Kanojo</option>
+							<option value="">Pilh judul buku</option>
+							<?php foreach ($books as $book): ?>
+								<option <?= set_select('title', html_escape($book['book_id'])) ?> value="<?= html_escape($book['book_id']) ?>"><?= html_escape($book['book_title']) ?></option>
+							<?php endforeach ?>
 						</select>
 						<?= form_error('title', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 				<div class="mb-3 row">
 					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="lendingStart">
-						Tanggal pinjam
-						<b class="text-danger">*</b>
+						Tanggal pinjam<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control <?= form_error('lending_start') === '' ?: 'is-invalid' ?>" id="lendingStart" name="lending_start" type="date" value="<?= set_value('lending_start', mdate('%Y-%m-%d')) ?>" />
-						<?= form_error('lending_start', '<div class="invalid-feedback">', '</div>') ?>
+						<input class="form-control <?= form_error('start') === '' ?: 'is-invalid' ?>" id="lendingStart" name="start" type="date" value="<?= html_escape(set_value('start', mdate('%Y-%m-%d'))) ?>" />
+						<?= form_error('start', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 				<div class="row">
 					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="lendingEnd">
-						Tanggal kembali
-						<b class="text-danger">*</b>
+						Tanggal kembali<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control <?= form_error('lending_end') === '' ?: 'is-invalid' ?>" id="lendingEnd" name="lending_end" type="date" value="<?= set_value('lending_end', mdate('%Y-%m-%d')) ?>" />
-						<?= form_error('lending_end', '<div class="invalid-feedback">', '</div>') ?>
+						<input class="form-control <?= form_error('end') === '' ?: 'is-invalid' ?>" id="lendingEnd" name="end" type="date" value="<?= html_escape(set_value('end', mdate('%Y-%m-%d'))) ?>" />
+						<?= form_error('end', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 			</div>
 
 			<!-- Card Footer -->
 			<div class="card-footer">
-				<button class="btn btn-primary shadow" type="submit">Tambah</button>
-				<button class="btn btn-secondary shadow" type="reset">Reset</button>
+				<button class="btn btn-primary shadow" type="submit">
+					<i class="bi bi-plus-lg"></i>
+					Tambah
+				</button>
+				<button class="btn btn-secondary shadow" type="reset">
+					<i class="bi bi-x-lg"></i>
+					Reset
+				</button>
 			</div>
-		</div>
+		<?= form_close() ?>
 	</div>
 </main>

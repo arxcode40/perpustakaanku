@@ -11,3 +11,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/userguide3/general/hooks.html
 |
 */
+$hook['pre_system'] = function()
+{
+	if (ENVIRONMENT === 'maintenance')
+	{
+		show_error('Server is under maintenance', 503);
+
+		return;
+	}
+};
