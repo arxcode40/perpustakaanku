@@ -96,17 +96,17 @@
 							<?php foreach ($books as $book): ?>
 								<tr class="align-middle">
 									<th class="text-start" scope="row"><?= $i++ ?></th>
-									<td><?= html_escape($book['book_id']) ?></td>
-									<td><?= html_escape($book['book_title']) ?></td>
-									<td class="text-start"><?= html_escape($book['book_year']) ?></td>
-									<td><?= html_escape($book['book_author']) ?></td>
-									<td><?= html_escape($book['book_publisher']) ?></td>
+									<td><?= html_escape($book['id']) ?></td>
+									<td><?= html_escape($book['title']) ?></td>
+									<td class="text-start"><?= html_escape($book['publication_year']) ?></td>
+									<td><?= html_escape($book['author']) ?></td>
+									<td><?= html_escape($book['publisher']) ?></td>
 									<td class="text-nowrap">
-										<a class="btn btn-primary btn-sm shadow" href="/buku/ubah/<?= html_escape($book['book_id']) ?>">
+										<a class="btn btn-primary btn-sm shadow" href="/buku/ubah/<?= html_escape($book['id']) ?>">
 											<i class="bi bi-pencil-square"></i>
 											<span class="d-none d-sm-inline">Ubah</span>
 										</a>
-										<?= form_open('buku/hapus', array('class' => 'd-inline-block'), array('book_id' => html_escape($book['book_id']))) ?>
+										<?= form_open('buku/hapus', array('class' => 'd-inline-block'), array('id' => html_escape($book['id']))) ?>
 											<button class="btn btn-danger btn-sm shadow" type="submit">
 												<i class="bi bi-trash-fill"></i>
 												<span class="d-none d-sm-inline">Hapus</span>

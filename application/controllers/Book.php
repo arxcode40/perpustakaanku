@@ -33,7 +33,7 @@ class Book extends CI_Controller {
 			array('max_length[64]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
-			'year', 'tahun terbit buku',
+			'publication_year', 'tahun terbit buku',
 			array('exact_length[4]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
@@ -66,9 +66,9 @@ class Book extends CI_Controller {
 		}
 	}
 
-	public function update($book_id)
+	public function update($id)
 	{
-		if ($this->book_model->exists($book_id) === FALSE)
+		if ($this->book_model->exists($id) === FALSE)
 		{
 			show_404();
 
@@ -80,7 +80,7 @@ class Book extends CI_Controller {
 			array('max_length[64]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
-			'year', 'tahun terbit buku',
+			'publication_year', 'tahun terbit buku',
 			array('exact_length[4]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
@@ -96,7 +96,7 @@ class Book extends CI_Controller {
 		{
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Ubah Data Buku';
-			$data['book'] = $this->book_model->get($book_id);
+			$data['book'] = $this->book_model->get($id);
 
 			$this->load->view('templates/begin', $data);
 			$this->load->view('templates/navbar');
@@ -107,7 +107,7 @@ class Book extends CI_Controller {
 		}
 		else
 		{
-			$this->book_model->update($book_id);
+			$this->book_model->update($id);
 
 			redirect('buku');
 		}
@@ -115,7 +115,7 @@ class Book extends CI_Controller {
 
 	public function delete()
 	{
-		if ($this->book_model->exists($this->input->post('book_id')) === FALSE)
+		if ($this->book_model->exists($this->input->post('id')) === FALSE)
 		{
 			show_404();
 

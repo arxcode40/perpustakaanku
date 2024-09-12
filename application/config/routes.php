@@ -68,9 +68,9 @@ $route['peminjaman/ubah/(:any)'] = 'booklending/update/$1';
 $route['peminjaman/hapus']['POST'] = 'booklending/delete';
 
 $route['pengembalian'] = 'bookreturn/index';
-$route['pengembalian/tambah/(:any)'] = 'bookreturn/create/$1';
+$route['pengembalian/tambah'] = 'bookreturn/create';
 $route['pengembalian/ubah/(:any)'] = 'bookreturn/update/$1';
-$route['pengembalian/hapus/(:any)'] = 'bookreturn/delete/$1';
+$route['pengembalian/hapus']['POST'] = 'bookreturn/delete';
 
 $route['default_controller'] = 'dashboard';
 $route['404_override'] = '';

@@ -42,22 +42,22 @@
 			<!-- Card body -->
 			<div class="card-body">
 				<div class="mb-3 row">
-					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberCode">
+					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="id">
 						Kode anggota<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control" disabled="disabled" id="memberCode" type="text" value="<?= html_escape($last_id) ?>" />
+						<input class="form-control" disabled="disabled" id="id" type="text" value="<?= html_escape($last_id) ?>" />
 					</div>
 				</div>
 				<div class="mb-3 row">
-					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberName">
+					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="fullname">
 						Nama anggota<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input autofocus="autofocus" class="form-control <?= form_error('name') === '' ?: 'is-invalid' ?>" id="memberName" name="name" placeholder="Masukkan nama anggota" type="text" value="<?= html_escape(set_value('name')) ?>" />
-						<?= form_error('name', '<div class="invalid-feedback">', '</div>') ?>
+						<input autofocus="autofocus" class="form-control <?= form_error('fullname') === '' ?: 'is-invalid' ?>" id="fullname" name="fullname" placeholder="Masukkan nama anggota" type="text" value="<?= html_escape(set_value('fullname')) ?>" />
+						<?= form_error('fullname', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 				<fieldset class="mb-3 row">
@@ -67,44 +67,44 @@
 					</legend>
 					<div class="col-md-9 col-lg-10">
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" <?= set_radio('gender', 'Laki-laki', TRUE) ?> id="memberGenderMale" name="gender" type="radio" value="Laki-laki" />
-							<label class="form-check-label" for="memberGenderMale">Laki-laki</label>
+							<input class="form-check-input" <?= set_radio('gender', 'Laki-laki', TRUE) ?> id="male" name="gender" type="radio" value="Laki-laki" />
+							<label class="form-check-label" for="male">Laki-laki</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" <?= set_radio('gender', 'Perempuan') ?> id="memberGenderFemale" name="gender" type="radio" value="Perempuan" />
-							<label class="form-check-label" for="memberGenderFemale">Perempuan</label>
+							<input class="form-check-input" <?= set_radio('gender', 'Perempuan') ?> id="female" name="gender" type="radio" value="Perempuan" />
+							<label class="form-check-label" for="female">Perempuan</label>
 						</div>
 						<?= form_error('gender', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</fieldset>
 				<div class="mb-3 row">
-					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberEmail">
+					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="email">
 						Email anggota<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control <?= form_error('email') === '' ?: 'is-invalid' ?>" id="memberEmail" name="email" placeholder="Masukkan email anggota" type="email" value="<?= html_escape(set_value('email')) ?>" />
+						<input class="form-control <?= form_error('email') === '' ?: 'is-invalid' ?>" id="email" name="email" placeholder="Masukkan email anggota" type="email" value="<?= html_escape(set_value('email')) ?>" />
 						<?= form_error('email', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 				<div class="mb-3 row">
-					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberPhone">
+					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="phoneNumber">
 						Nomor telepon<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control <?= form_error('phone') === '' ?: 'is-invalid' ?>" id="memberPhone" name="phone" placeholder="Masukkan nomor telepon" type="tel" value="<?= html_escape(set_value('phone')) ?>" />
-						<?= form_error('phone', '<div class="invalid-feedback">', '</div>') ?>
+						<input class="form-control <?= form_error('phone_number') === '' ?: 'is-invalid' ?>" id="phoneNumber" name="phone_number" placeholder="Masukkan nomor telepon" type="tel" value="<?= html_escape(set_value('phone_number')) ?>" />
+						<?= form_error('phone_number', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 				<div class="row">
-					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberAddress">
+					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="address">
 						Alamat anggota
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<textarea class="form-control <?= form_error('address') === '' ?: 'is-invalid' ?>" id="memberAddress" name="address" placeholder="Masukkan alamat anggota"><?= html_escape(set_value('address')) ?></textarea>
-						<?= form_error('phone', '<div class="invalid-feedback">', '</div>') ?>
+						<textarea class="form-control <?= form_error('address') === '' ?: 'is-invalid' ?>" id="address" name="address" placeholder="Masukkan alamat anggota"><?= html_escape(set_value('address')) ?></textarea>
+						<?= form_error('address', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 			</div>

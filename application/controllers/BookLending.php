@@ -29,7 +29,7 @@ class BookLending extends CI_Controller {
 	public function create()
 	{
 		$this->form_validation->set_rules(
-			'name', 'nama anggota',
+			'fullname', 'nama anggota',
 			array('exact_length[8]', 'regex_match[/^M\d{7}$/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
@@ -37,11 +37,11 @@ class BookLending extends CI_Controller {
 			array('exact_length[8]', 'regex_match[/^B\d{7}$/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
-			'start', 'tanggal pinjam',
+			'lending_date', 'tanggal pinjam',
 			array('exact_length[10]', 'regex_match[/((19|20)\d{2})-(0[1-9]|1[1,2])-(0[1-9]|[12][0-9]|3[01])/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
-			'end', 'tanggal kembali',
+			'return_date', 'tanggal kembali',
 			array('exact_length[10]', 'regex_match[/((19|20)\d{2})-(0[1-9]|1[1,2])-(0[1-9]|[12][0-9]|3[01])/]', 'required', 'trim')
 		);
 
@@ -68,9 +68,9 @@ class BookLending extends CI_Controller {
 		}
 	}
 
-	public function update($lending_id)
+	public function update($id)
 	{
-		if ($this->lending_model->exists($lending_id) === FALSE)
+		if ($this->lending_model->exists($id) === FALSE)
 		{
 			show_404();
 
@@ -78,7 +78,7 @@ class BookLending extends CI_Controller {
 		}
 
 		$this->form_validation->set_rules(
-			'name', 'nama anggota',
+			'fullname', 'nama anggota',
 			array('exact_length[8]', 'regex_match[/^M\d{7}$/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
@@ -86,11 +86,11 @@ class BookLending extends CI_Controller {
 			array('exact_length[8]', 'regex_match[/^B\d{7}$/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
-			'start', 'tanggal pinjam',
+			'lending_date', 'tanggal pinjam',
 			array('exact_length[10]', 'regex_match[/((19|20)\d{2})-(0[1-9]|1[1,2])-(0[1-9]|[12][0-9]|3[01])/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
-			'end', 'tanggal kembali',
+			'return_date', 'tanggal kembali',
 			array('exact_length[10]', 'regex_match[/((19|20)\d{2})-(0[1-9]|1[1,2])-(0[1-9]|[12][0-9]|3[01])/]', 'required', 'trim')
 		);
 
@@ -98,7 +98,7 @@ class BookLending extends CI_Controller {
 		{
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Ubah Data Peminjaman';
-			$data['lending'] = $this->lending_model->get($lending_id);
+			$data['lending'] = $this->lending_model->get($id);
 			$data['members'] = $this->member_model->all();
 			$data['books'] = $this->book_model->all();
 
@@ -111,7 +111,7 @@ class BookLending extends CI_Controller {
 		}
 		else
 		{
-			$this->lending_model->update($lending_id);
+			$this->lending_model->update($id);
 
 			redirect('peminjaman');
 		}
@@ -119,7 +119,7 @@ class BookLending extends CI_Controller {
 
 	public function delete()
 	{
-		if ($this->lending_model->exists($this->input->post('lending_id')) === FALSE)
+		if ($this->lending_model->exists($this->input->post('id')) === FALSE)
 		{
 			show_404();
 

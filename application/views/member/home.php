@@ -96,17 +96,17 @@
 							<?php foreach ($members as $member): ?>
 								<tr class="align-middle">
 									<th class="text-start" scope="row"><?= $i++ ?></th>
-									<td><?= html_escape($member['member_id']) ?></td>
-									<td><?= html_escape($member['member_name']) ?></td>
-									<td><?= html_escape($member['member_gender']) ?></td>
-									<td><?= html_escape($member['member_email']) ?></td>
-									<td class="text-start"><?= html_escape($member['member_phone']) ?></td>
+									<td><?= html_escape($member['id']) ?></td>
+									<td><?= html_escape($member['fullname']) ?></td>
+									<td><?= html_escape($member['gender']) ?></td>
+									<td><?= html_escape($member['email']) ?></td>
+									<td class="text-start"><?= html_escape($member['phone_number']) ?></td>
 									<td class="text-nowrap">
-										<a class="btn btn-primary btn-sm shadow" href="/anggota/ubah/<?= html_escape($member['member_id']) ?>">
+										<a class="btn btn-primary btn-sm shadow" href="/anggota/ubah/<?= html_escape($member['id']) ?>">
 											<i class="bi bi-pencil-square"></i>
 											<span class="d-none d-sm-inline">Ubah</span>
 										</a>
-										<?= form_open('anggota/hapus', array('class' => 'd-inline-block'), array('member_id' => html_escape($member['member_id']))) ?>
+										<?= form_open('anggota/hapus', array('class' => 'd-inline-block'), array('id' => html_escape($member['id']))) ?>
 											<button class="btn btn-danger btn-sm shadow" type="submit">
 												<i class="bi bi-trash-fill"></i>
 												<span class="d-none d-sm-inline">Hapus</span>

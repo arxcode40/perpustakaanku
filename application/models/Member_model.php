@@ -6,14 +6,14 @@ class Member_model extends CI_Model {
 	public function last()
 	{
 		$result = $this->db->get('members')->last_row('array');
-		$last_id = intval(substr($result['member_id'], 1));
+		$last_id = intval(substr($result['id'], 1));
 
 		return 'M' . str_repeat(0, 7 - strlen($last_id)) . ++$last_id;
 	}
 
-	public function exists($member_id)
+	public function exists($id)
 	{
-		$this->db->where('member_id', $member_id);
+		$this->db->where('id', $id);
 		$this->db->limit(1);
 
 		return (bool) $this->db->get('members')->num_rows();
@@ -24,9 +24,9 @@ class Member_model extends CI_Model {
 		return $this->db->get('members')->result_array();
 	}
 
-	public function get($member_id)
+	public function get($id)
 	{
-		$this->db->where('member_id', $member_id);
+		$this->db->where('id', $id);
 		$this->db->limit(1);
 
 		return $this->db->get('members')->row_array();
@@ -35,12 +35,12 @@ class Member_model extends CI_Model {
 	public function create()
 	{
 		$member_data = array(
-			'member_id' => $this->last(),
-			'member_name' => $this->input->post('name'),
-			'member_gender' => $this->input->post('gender'),
-			'member_email' => $this->input->post('email'),
-			'member_phone' => $this->input->post('phone'),
-			'member_address' => $this->input->post('address'),
+			'id' => $this->last(),
+			'fullname' => $this->input->post('fullname'),
+			'gender' => $this->input->post('gender'),
+			'email' => $this->input->post('email'),
+			'phone_number' => $this->input->post('phone_number'),
+			'address' => $this->input->post('address'),
 			'created_at' => mdate('%Y-%m-%d %H:%i:%s'),
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
@@ -74,20 +74,20 @@ class Member_model extends CI_Model {
 		}
 	}
 
-	public function update($member_id)
+	public function update($id)
 	{
 		$member_data = array(
-			'member_name' => $this->input->post('name'),
-			'member_gender' => $this->input->post('gender'),
-			'member_email' => $this->input->post('email'),
-			'member_phone' => $this->input->post('phone'),
-			'member_address' => $this->input->post('address'),
+			'fullname' => $this->input->post('fullname'),
+			'gender' => $this->input->post('gender'),
+			'email' => $this->input->post('email'),
+			'phone_number' => $this->input->post('phone_number'),
+			'address' => $this->input->post('address'),
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
 		$this->db->trans_start();
 		$this->db->set($member_data);
-		$this->db->where('member_id', $member_id);
+		$this->db->where('id', $id);
 		$this->db->update('members');
 		$this->db->trans_complete();
 
@@ -120,7 +120,7 @@ class Member_model extends CI_Model {
 	public function delete()
 	{
 		$this->db->trans_start();
-		$this->db->where('member_id', $this->input->post('member_id'));
+		$this->db->where('id', $this->input->post('id'));
 		$this->db->delete('members');
 		$this->db->trans_complete();
 

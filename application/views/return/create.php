@@ -19,19 +19,19 @@
 					</a>
 				</li>
 				<li class="active breadcrumb-item">
-					<i class="bi bi-pencil-square"></i>
-					Ubah data pengembalian
+					<i class="bi bi-plus-lg"></i>
+					Tambah data pengembalian
 				</li>
 			</ol>
 		</nav>
 
-		<!-- Return update form -->
+		<!-- Return create form -->
 		<?= form_open(uri_string(), array('class' => 'card shadow')) ?>
 			<!-- Card header -->
 			<div class="align-items-center card-header d-flex">
 				<h5 class="mb-0 me-auto">
-					<i class="bi bi-pencil-square"></i>
-					Ubah data pengembalian
+					<i class="bi bi-plus-lg"></i>
+					Tambah data pengembalian
 				</h5>
 				<a class="btn btn-secondary btn-sm shadow" href="/pengembalian/">
 					<i class="bi bi-arrow-left"></i>
@@ -42,30 +42,20 @@
 			<!-- Card body -->
 			<div class="card-body">
 				<div class="mb-3 row">
-					<label class="col-md-3 col-form-label d-md-flex" for="id">
+					<label class="col-md-3 col-form-label d-md-flex" for="lending">
 						Kode transaksi<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9">
-						<input class="form-control" disabled="disabled" id="id" type="text" value="<?= html_escape($return['id']) ?>" />
-					</div>
-				</div>
-				<div class="mb-3 row">
-					<label class="col-md-3 col-form-label d-md-flex" for="fullname">
-						Nama anggota<b class="text-danger">*</b>
-						<span class="d-none d-md-block fw-medium ms-auto">:</span>
-					</label>
-					<div class="col-md-9">
-						<input class="form-control" disabled="disabled" id="fullname" type="text" value="<?= html_escape($return['fullname']) ?>" />
-					</div>
-				</div>
-				<div class="mb-3 row">
-					<label class="col-md-3 col-form-label d-md-flex" for="title">
-						Judul buku<b class="text-danger">*</b>
-						<span class="d-none d-md-block fw-medium ms-auto">:</span>
-					</label>
-					<div class="col-md-9">
-						<input class="form-control" disabled="disabled" id="title" type="text" value="<?= html_escape($return['title']) ?>" />
+						<select autofocus="autofocus" class="form-select <?= form_error('lending') === '' ?: 'is-invalid' ?>" id="lending" name="lending">
+							<option value="">Pilh transaksi peminjaman</option>
+							<?php foreach ($lendings as $lending): ?>
+								<?php if ($lending['checkout_date'] === NULL): ?>
+								<option <?= set_select('title', html_escape($lending['id'])) ?> value="<?= html_escape($lending['id']) ?>"><?= html_escape($lending['id']) ?> (<?= html_escape($lending['fullname']) ?> - <?= html_escape($lending['title']) ?>)</option>
+								<?php endif ?>
+							<?php endforeach ?>
+						</select>
+						<?= form_error('lending', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 				<div class="row">
@@ -74,7 +64,7 @@
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9">
-						<input class="form-control <?= form_error('checkout_date') === '' ?: 'is-invalid' ?>" id="checkoutDate" min="<?= html_escape($return['lending_date']) ?>" name="checkout_date" type="date" value="<?= html_escape(set_value('checkout_date', $return['checkout_date'])) ?>" />
+						<input class="form-control <?= form_error('checkout_date') === '' ?: 'is-invalid' ?>" id="checkoutDate" name="checkout_date" type="date" value="<?= html_escape(set_value('checkout_date', mdate('%Y-%m-%d'))) ?>" />
 						<?= form_error('checkout_date', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
@@ -83,8 +73,8 @@
 			<!-- Card footer -->
 			<div class="card-footer">
 				<button class="btn btn-primary shadow" type="submit">
-					<i class="bi bi-pencil-square"></i>
-					Ubah
+					<i class="bi bi-plus-lg"></i>
+					Tambah
 				</button>
 				<button class="btn btn-secondary shadow" type="reset">
 					<i class="bi bi-x-lg"></i>

@@ -19,7 +19,7 @@
 			</ol>
 		</nav>
 
-		<!-- Lending datatable -->
+		<!-- Lendings datatable -->
 		<div class="card shadow">
 			<!-- Card header -->
 			<div class="align-items-center card-header d-flex">
@@ -96,17 +96,17 @@
 							<?php foreach ($lendings as $lending): ?>
 								<tr class="align-middle">
 									<th class="text-start" scope="row"><?= $i++ ?></th>
-									<td><?= html_escape($lending['lending_id']) ?></td>
-									<td><?= html_escape($lending['member_name']) ?></td>
-									<td><?= html_escape($lending['book_title']) ?></td>
-									<td><?= html_escape(nice_date($lending['lending_start'], 'd M Y')) ?></td>
-									<td><?= html_escape(nice_date($lending['lending_end'], 'd M Y')) ?></td>
+									<td><?= html_escape($lending['id']) ?></td>
+									<td><?= html_escape($lending['fullname']) ?></td>
+									<td><?= html_escape($lending['title']) ?></td>
+									<td><?= html_escape(nice_date($lending['lending_date'], 'd M Y')) ?></td>
+									<td><?= html_escape(nice_date($lending['return_date'], 'd M Y')) ?></td>
 									<td class="text-nowrap">
-										<a class="btn btn-primary btn-sm shadow" href="/peminjaman/ubah/<?= html_escape($lending['lending_id']) ?>">
+										<a class="btn btn-primary btn-sm shadow" href="/peminjaman/ubah/<?= html_escape($lending['id']) ?>">
 											<i class="bi bi-pencil-square"></i>
 											<span class="d-none d-sm-inline">Ubah</span>
 										</a>
-										<?= form_open('peminjaman/hapus', array('class' => 'd-inline-block'), array('lending_id' => html_escape($lending['lending_id']))) ?>
+										<?= form_open('peminjaman/hapus', array('class' => 'd-inline-block'), array('id' => html_escape($lending['id']))) ?>
 											<button class="btn btn-danger btn-sm shadow" type="submit">
 												<i class="bi bi-trash-fill"></i>
 												<span class="d-none d-sm-inline">Hapus</span>

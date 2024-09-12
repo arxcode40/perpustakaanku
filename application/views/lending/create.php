@@ -42,62 +42,62 @@
 			<!-- Card body -->
 			<div class="card-body">
 				<div class="mb-3 row">
-					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="lendingCode">
+					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="id">
 						Kode peminjaman<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control" disabled="disabled" id="lendingCode" type="text" value="<?= html_escape($last_id) ?>" />
+						<input class="form-control" disabled="disabled" id="id" type="text" value="<?= html_escape($last_id) ?>" />
 					</div>
 				</div>
 				<div class="mb-3 row">
-					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="memberName">
+					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="fullname">
 						Nama anggota<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<select autofocus="autofocus" class="form-select <?= form_error('name') === '' ?: 'is-invalid' ?>" id="memberName" name="name">
-							<option value="">Pilh nama anggota</option>
+						<select autofocus="autofocus" class="form-select <?= form_error('fullname') === '' ?: 'is-invalid' ?>" id="fullname" name="fullname">
+							<option value="">Pilih nama anggota</option>
 							<?php foreach ($members as $member): ?>
-								<option <?= set_select('name', html_escape($member['member_id'])) ?> value="<?= html_escape($member['member_id']) ?>"><?= html_escape($member['member_name']) ?></option>
+								<option <?= set_select('fullname', html_escape($member['id'])) ?> value="<?= html_escape($member['id']) ?>"><?= html_escape($member['fullname']) ?></option>
 							<?php endforeach ?>
 						</select>
 						<?= form_error('name', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 				<div class="mb-3 row">
-					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="bookTitle">
+					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="title">
 						Judul buku<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<select class="form-select <?= form_error('title') === '' ?: 'is-invalid' ?>" id="bookTitle" name="title">
-							<option value="">Pilh judul buku</option>
+						<select class="form-select <?= form_error('title') === '' ?: 'is-invalid' ?>" id="title" name="title">
+							<option value="">Pilih judul buku</option>
 							<?php foreach ($books as $book): ?>
-								<option <?= set_select('title', html_escape($book['book_id'])) ?> value="<?= html_escape($book['book_id']) ?>"><?= html_escape($book['book_title']) ?></option>
+								<option <?= set_select('title', html_escape($book['id'])) ?> value="<?= html_escape($book['id']) ?>"><?= html_escape($book['title']) ?></option>
 							<?php endforeach ?>
 						</select>
 						<?= form_error('title', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 				<div class="mb-3 row">
-					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="lendingStart">
+					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="lendingDate">
 						Tanggal pinjam<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control <?= form_error('start') === '' ?: 'is-invalid' ?>" id="lendingStart" name="start" type="date" value="<?= html_escape(set_value('start', mdate('%Y-%m-%d'))) ?>" />
-						<?= form_error('start', '<div class="invalid-feedback">', '</div>') ?>
+						<input class="form-control <?= form_error('lending_date') === '' ?: 'is-invalid' ?>" id="lendingDate" name="lending_date" type="date" value="<?= html_escape(set_value('lending_date', mdate('%Y-%m-%d'))) ?>" />
+						<?= form_error('lending_date', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 				<div class="row">
-					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="lendingEnd">
+					<label class="col-md-3 col-lg-2 col-form-label d-md-flex" for="returnDate">
 						Tanggal kembali<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control <?= form_error('end') === '' ?: 'is-invalid' ?>" id="lendingEnd" name="end" type="date" value="<?= html_escape(set_value('end', mdate('%Y-%m-%d'))) ?>" />
-						<?= form_error('end', '<div class="invalid-feedback">', '</div>') ?>
+						<input class="form-control <?= form_error('return_date') === '' ?: 'is-invalid' ?>" id="returnDate" min="<?= html_escape(mdate('%Y-%m-%d')) ?>" name="return_date" type="date" value="<?= html_escape(set_value('return_date', mdate('%Y-%m-%d'))) ?>" />
+						<?= form_error('return_date', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
 			</div>

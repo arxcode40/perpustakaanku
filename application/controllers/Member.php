@@ -29,7 +29,7 @@ class Member extends CI_Controller {
 	public function create()
 	{
 		$this->form_validation->set_rules(
-			'name', 'nama anggota',
+			'fullname', 'nama anggota',
 			array('max_length[64]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
@@ -41,7 +41,7 @@ class Member extends CI_Controller {
 			array('max_length[320]', 'required', 'trim', 'valid_email')
 		);
 		$this->form_validation->set_rules(
-			'phone', 'nomor telepon anggota',
+			'phone_number', 'nomor telepon anggota',
 			array('max_length[16]', 'numeric', 'regex_match[/(08\d{2})(\d{4})(\d{1,})/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
@@ -70,9 +70,9 @@ class Member extends CI_Controller {
 		}
 	}
 
-	public function update($member_id)
+	public function update($id)
 	{
-		if ($this->member_model->exists($member_id) === FALSE)
+		if ($this->member_model->exists($id) === FALSE)
 		{
 			show_404();
 
@@ -80,7 +80,7 @@ class Member extends CI_Controller {
 		}
 
 		$this->form_validation->set_rules(
-			'name', 'nama anggota',
+			'fullname', 'nama anggota',
 			array('max_length[64]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
@@ -92,7 +92,7 @@ class Member extends CI_Controller {
 			array('max_length[320]', 'required', 'trim', 'valid_email')
 		);
 		$this->form_validation->set_rules(
-			'phone', 'nomor telepon anggota',
+			'phone_number', 'nomor telepon anggota',
 			array('max_length[16]', 'numeric', 'regex_match[/(08\d{2})(\d{4})(\d{1,})/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
@@ -104,7 +104,7 @@ class Member extends CI_Controller {
 		{
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Ubah Data Anggota';
-			$data['member'] = $this->member_model->get($member_id);
+			$data['member'] = $this->member_model->get($id);
 
 			$this->load->view('templates/begin', $data);
 			$this->load->view('templates/navbar');
@@ -115,7 +115,7 @@ class Member extends CI_Controller {
 		}
 		else
 		{
-			$this->member_model->update($member_id);
+			$this->member_model->update($id);
 
 			redirect('anggota');
 		}
@@ -123,7 +123,7 @@ class Member extends CI_Controller {
 
 	public function delete()
 	{
-		if ($this->member_model->exists($this->input->post('member_id')) === FALSE)
+		if ($this->member_model->exists($this->input->post('id')) === FALSE)
 		{
 			show_404();
 

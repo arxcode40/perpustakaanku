@@ -18,8 +18,8 @@ class Dashboard extends CI_Controller {
 		$data['title'] = 'Dasbor';
 		$data['total_members'] = $this->db->get('members')->num_rows();
 		$data['total_books'] = $this->db->get('books')->num_rows();
-		$data['total_lendings'] = $this->db->get('lendings')->num_rows();
-		$data['total_returns'] = $this->db->get('returns')->num_rows();
+		$data['total_lendings'] = $this->db->get('transactions')->num_rows();
+		$data['total_returns'] = $this->db->where('checkout_date IS NOT', 'NULL', FALSE)->get('transactions')->num_rows();
 
 		$this->load->view('templates/begin', $data);
 		$this->load->view('templates/navbar');

@@ -5,51 +5,52 @@ class Lending_model extends CI_Model {
 
 	public function last()
 	{
-		$result = $this->db->get('lendings')->last_row('array');
-		$last_id = intval(substr($result['lending_id'], 1));
+		$result = $this->db->get('transactions')->last_row('array');
+		$last_id = intval(substr($result['id'], 1));
 
-		return 'L' . str_repeat(0, 7 - strlen($last_id)) . ++$last_id;
+		return 'T' . str_repeat(0, 7 - strlen($last_id)) . ++$last_id;
 	}
 
-	public function exists($lending_id)
+	public function exists($id)
 	{
-		$this->db->where('lending_id', $lending_id);
+		$this->db->where('id', $id);
 		$this->db->limit(1);
 
-		return (bool) $this->db->get('lendings')->num_rows();
+		return (bool) $this->db->get('transactions')->num_rows();
 	}
 
 	public function all()
 	{
-		$this->db->join('members', 'members.member_id = lendings.member_id', 'inner');
-		$this->db->join('books', 'books.book_id = lendings.book_id', 'inner');
+		$this->db->select('*, transactions.id AS id');
+		$this->db->join('members', 'members.id = transactions.member_id', 'left');
+		$this->db->join('books', 'books.id = transactions.book_id', 'left');
 
-		return $this->db->get('lendings')->result_array();
+		return $this->db->get('transactions')->result_array();
 	}
 
-	public function get($lending_id)
+	public function get($id)
 	{
-		$this->db->where('lending_id', $lending_id);
+		$this->db->where('id', $id);
 		$this->db->limit(1);
 
-		return $this->db->get('lendings')->row_array();
+		return $this->db->get('transactions')->row_array();
 	}
 
 	public function create()
 	{
 		$lending_data = array(
-			'lending_id' => $this->last(),
-			'member_id' => $this->input->post('name'),
+			'id' => $this->last(),
+			'member_id' => $this->input->post('fullname'),
 			'book_id' => $this->input->post('title'),
-			'lending_start' => $this->input->post('start'),
-			'lending_end' => $this->input->post('end'),
+			'lending_date' => $this->input->post('lending_date'),
+			'return_date' => $this->input->post('return_date'),
 			'created_at' => mdate('%Y-%m-%d %H:%i:%s'),
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
 		$this->db->trans_start();
 		$this->db->set($lending_data);
-		$this->db->insert('lendings');
+		$this->db->insert('transactions');
 		$this->db->trans_complete();
 
 		if ($this->db->trans_status() === FALSE)
@@ -76,20 +77,20 @@ class Lending_model extends CI_Model {
 		}
 	}
 
-	public function update($lending_id)
+	public function update($id)
 	{
 		$lending_data = array(
-			'member_id' => $this->input->post('name'),
+			'member_id' => $this->input->post('fullname'),
 			'book_id' => $this->input->post('title'),
-			'lending_start' => $this->input->post('start'),
-			'lending_end' => $this->input->post('end'),
+			'lending_date' => $this->input->post('lending_date'),
+			'return_date' => $this->input->post('return_date'),
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
 		$this->db->trans_start();
 		$this->db->set($lending_data);
-		$this->db->where('lending_id', $lending_id);
-		$this->db->update('lendings');
+		$this->db->where('id', $id);
+		$this->db->update('transactions');
 		$this->db->trans_complete();
 
 		if ($this->db->trans_status() === FALSE)
@@ -121,8 +122,8 @@ class Lending_model extends CI_Model {
 	public function delete()
 	{
 		$this->db->trans_start();
-		$this->db->where('lending_id', $this->input->post('lending_id'));
-		$this->db->delete('lendings');
+		$this->db->where('id', $this->input->post('id'));
+		$this->db->delete('transactions');
 		$this->db->trans_complete();
 
 		if ($this->db->trans_status() === FALSE)
