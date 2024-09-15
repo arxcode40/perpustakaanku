@@ -86,7 +86,7 @@
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
 					<div class="col-md-9 col-lg-10">
-						<input class="form-control <?= form_error('lending_date') === '' ?: 'is-invalid' ?>" id="lendingDate" name="lending_date" type="date" value="<?= html_escape(set_value('lending_date', $lending['lending_date'])) ?>" />
+						<input class="form-control <?= form_error('lending_date') === '' ?: 'is-invalid' ?>" id="lendingDate" name="lending_date" oninput="$('#returnDate').attr('min', $(this).val());" type="date" value="<?= html_escape(set_value('lending_date', $lending['lending_date'])) ?>" />
 						<?= form_error('lending_date', '<div class="invalid-feedback">', '</div>') ?>
 					</div>
 				</div>
@@ -104,10 +104,6 @@
 
 			<!-- Card footer -->
 			<div class="card-footer">
-				<!-- <a class="btn btn-success shadow" href="/pengembalian/tambah/<?= $lending['lending_id'] ?>">
-					<i class="bi bi-check-lg"></i>
-					Selesai
-				</a> -->
 				<button class="btn btn-primary shadow" type="submit">
 					<i class="bi bi-pencil-square"></i>
 					Ubah

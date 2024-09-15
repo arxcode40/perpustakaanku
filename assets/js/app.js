@@ -4,6 +4,22 @@ $.fn.replaceClass = function(oldClass, newClass) {
   return this.removeClass(oldClass).addClass(newClass);
 };
 
+function currencyFormat() {
+  $(event.target).val(function(index, number) {
+    number = number.replace(/[\D]+/g, "");
+
+    if (number === "") {
+      return number;
+    }
+
+    number = parseInt(number.replace(/[\.]+/g, ""));
+
+    number = new Intl.NumberFormat("id-ID").format(number);
+
+    return number;
+  })
+}
+
 function showPassword() {
   const toggler = $(event.target);
   const target = $(toggler).prev();
@@ -31,3 +47,12 @@ $(document).on("scroll", function() {
     $("#scrollToTop").fadeOut("fast");
   }
 });
+
+function returnDetail() {
+  const id = $(event.target).val();
+  const data = returns.filter(data => data.id === id)[0];
+
+  $("#fullname").val(data.fullname);
+  $("#title").val(data.title);
+  $("#checkoutDate").attr("min", data.lending_date);
+}

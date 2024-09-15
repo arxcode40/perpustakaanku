@@ -42,38 +42,38 @@
 			<!-- Card body -->
 			<div class="card-body">
 				<div class="mb-3 row">
-					<label class="col-md-3 col-form-label d-md-flex" for="id">
+					<label class="col-md-4 col-lg-3 col-form-label d-md-flex" for="id">
 						Kode transaksi<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
-					<div class="col-md-9">
+					<div class="col-md-8 col-lg-9">
 						<input class="form-control" disabled="disabled" id="id" type="text" value="<?= html_escape($return['id']) ?>" />
 					</div>
 				</div>
 				<div class="mb-3 row">
-					<label class="col-md-3 col-form-label d-md-flex" for="fullname">
+					<label class="col-md-4 col-lg-3 col-form-label d-md-flex" for="fullname">
 						Nama anggota<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
-					<div class="col-md-9">
+					<div class="col-md-8 col-lg-9">
 						<input class="form-control" disabled="disabled" id="fullname" type="text" value="<?= html_escape($return['fullname']) ?>" />
 					</div>
 				</div>
 				<div class="mb-3 row">
-					<label class="col-md-3 col-form-label d-md-flex" for="title">
+					<label class="col-md-4 col-lg-3 col-form-label d-md-flex" for="title">
 						Judul buku<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
-					<div class="col-md-9">
+					<div class="col-md-8 col-lg-9">
 						<input class="form-control" disabled="disabled" id="title" type="text" value="<?= html_escape($return['title']) ?>" />
 					</div>
 				</div>
 				<div class="row">
-					<label class="col-md-3 col-form-label d-md-flex" for="checkoutDate">
+					<label class="col-md-4 col-lg-3 col-form-label d-md-flex" for="checkoutDate">
 						Tanggal pengembalian<b class="text-danger">*</b>
 						<span class="d-none d-md-block fw-medium ms-auto">:</span>
 					</label>
-					<div class="col-md-9">
+					<div class="col-md-8 col-lg-9">
 						<input class="form-control <?= form_error('checkout_date') === '' ?: 'is-invalid' ?>" id="checkoutDate" min="<?= html_escape($return['lending_date']) ?>" name="checkout_date" type="date" value="<?= html_escape(set_value('checkout_date', $return['checkout_date'])) ?>" />
 						<?= form_error('checkout_date', '<div class="invalid-feedback">', '</div>') ?>
 					</div>

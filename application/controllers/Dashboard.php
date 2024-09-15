@@ -9,6 +9,12 @@ class Dashboard extends CI_Controller {
 	{
 		parent::__construct();
 
+		// Middleware
+		if ($this->session->has_userdata('auth_token') === FALSE OR $this->auth_model->user_token_exists($this->session->userdata('auth_token')) === FALSE)
+		{
+			redirect('masuk');
+		}
+
 		$this->settings = $this->setting_model->get();
 	}
 

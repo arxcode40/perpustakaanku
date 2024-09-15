@@ -72,6 +72,9 @@ $route['pengembalian/tambah'] = 'bookreturn/create';
 $route['pengembalian/ubah/(:any)'] = 'bookreturn/update/$1';
 $route['pengembalian/hapus']['POST'] = 'bookreturn/delete';
 
+$route['profil'] = 'user/index';
+$route['pengaturan'] = 'setting/index';
+
 $route['default_controller'] = 'dashboard';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = TRUE;

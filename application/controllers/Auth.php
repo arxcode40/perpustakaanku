@@ -17,9 +17,10 @@ class Auth extends CI_Controller {
 	public function login()
 	{
 		// Middleware
-		if($this->session->has_userdata('auth_token') !== FALSE)
+		if($this->session->has_userdata('auth_token') === TRUE)
 		{
-			if($this->auth_model->user_token_exists($this->session->userdata('auth_token')) !== FALSE) {
+			if($this->auth_model->user_token_exists($this->session->userdata('auth_token')) === TRUE)
+			{
 				redirect('');
 			}
 		}

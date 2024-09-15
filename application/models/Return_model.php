@@ -36,7 +36,7 @@ class Return_model extends CI_Model {
 
 	public function create($library_fines)
 	{
-		$lending = $this->lending_model->get($this->input->post('lending'));
+		$lending = $this->lending_model->get($this->input->post('id'));
 
 		$return_date = date_create($lending['return_date']);
 		$checkout_date = date_create($this->input->post('checkout_date'));
@@ -51,7 +51,7 @@ class Return_model extends CI_Model {
 
 		$this->db->trans_start();
 		$this->db->set($return_data);
-		$this->db->where('id', $this->input->post('lending'));
+		$this->db->where('id', $this->input->post('id'));
 		$this->db->update('transactions');
 		$this->db->trans_complete();
 

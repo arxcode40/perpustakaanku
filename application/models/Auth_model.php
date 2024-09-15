@@ -7,7 +7,7 @@ class Auth_model extends CI_Model {
 	{
 		$auth_token = json_decode(base64_decode($auth_token), TRUE);
 
-		$this->db->where('user_id', $auth_token['user_id']);
+		$this->db->where('id', $auth_token['id']);
 		$this->db->limit(1);
 
 		return (bool) $this->db->get('users')->num_rows();

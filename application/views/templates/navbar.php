@@ -63,7 +63,7 @@
 
 				<!-- Profile dropdown -->
 				<li class="dropdown nav-item">
-					<a class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">
+					<a class="<?= in_array($this->uri->segment(1), array('profil', 'pengaturan')) === FALSE ?: 'active' ?> dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#">
 						<i class="bi bi-person-circle"></i>
 						Administrator
 					</a>
@@ -76,13 +76,13 @@
 							</h6>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/profil/">
+							<a class="<?= $this->uri->segment(1) !== 'profil' ?: 'active' ?> dropdown-item" href="/profil/">
 								<i class="bi bi-person-gear"></i>
 								Profil saya
 							</a>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/pengaturan/">
+							<a class="<?= $this->uri->segment(1) !== 'pengaturan' ?: 'active' ?> dropdown-item" href="/pengaturan/">
 								<i class="bi bi-gear-fill"></i>
 								pengaturan
 							</a>

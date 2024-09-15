@@ -9,6 +9,12 @@ class BookReturn extends CI_Controller {
 	{
 		parent::__construct();
 
+		// Middleware
+		if ($this->session->has_userdata('auth_token') === FALSE OR $this->auth_model->user_token_exists($this->session->userdata('auth_token')) === FALSE)
+		{
+			redirect('masuk');
+		}
+
 		$this->settings = $this->setting_model->get();
 	}
 
@@ -29,7 +35,7 @@ class BookReturn extends CI_Controller {
 	public function create()
 	{
 		$this->form_validation->set_rules(
-			'lending', 'transaksi peminjaman',
+			'id', 'transaksi peminjaman',
 			array('exact_length[8]', 'regex_match[/^T\d{7}$/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(

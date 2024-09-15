@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 12, 2024 at 04:09 AM
+-- Generation Time: Sep 15, 2024 at 04:43 AM
 -- Server version: 9.0.0
 -- PHP Version: 8.3.10
 
@@ -43,7 +43,8 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`id`, `title`, `publication_year`, `author`, `publisher`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('B0000001', 'Domestic na Kanojo', '2014', 'Kei Sasuga', 'Majalah Shounen', '2024-09-11 00:27:32', '2024-09-11 00:27:32', NULL);
+('B0000001', 'Kaifuku Jutsushi no Yarinaoshi', '2017', 'Rui Tsukiyo', 'Young Ace UP', '2024-09-11 00:27:32', '2024-09-15 04:41:40', NULL),
+('B0000002', 'Isekai Meikyuu de Harem wo', '2017', 'Shachi Sogano', 'Shounen Ace', '2024-09-15 03:03:02', '2024-09-15 04:42:27', NULL);
 
 -- --------------------------------------------------------
 
@@ -68,7 +69,8 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`id`, `fullname`, `gender`, `email`, `phone_number`, `address`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('M0000001', 'Arya Putra Sadewa', 'Laki-laki', 'aryaputrasadewa40@gmail.com', '0895339792382', 'Legok, Kab. Tangerang.', '2024-09-10 02:31:38', '2024-09-11 00:27:54', NULL);
+('M0000001', 'Arya Putra Sadewa', 'Laki-laki', 'aryaputrasadewa40@gmail.com', '0895339792382', 'Legok, Kab. Tangerang.', '2024-09-10 02:31:38', '2024-09-11 00:27:54', NULL),
+('M0000002', 'John Doe', 'Laki-laki', 'johndoe@gmail.com', '08123456789', '', '2024-09-15 02:58:52', '2024-09-15 02:58:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -114,7 +116,8 @@ CREATE TABLE `transactions` (
 --
 
 INSERT INTO `transactions` (`id`, `member_id`, `book_id`, `lending_date`, `return_date`, `checkout_date`, `fine`, `created_at`, `updated_at`, `deleted_at`) VALUES
-('T0000001', 'M0000001', 'B0000001', '2024-09-12', '2024-09-12', '2024-09-13', 2000, '2024-09-12 03:42:39', '2024-09-12 04:09:38', NULL);
+('T0000001', 'M0000001', 'B0000001', '2024-09-12', '2024-09-12', '2024-09-13', 2000, '2024-09-12 03:42:39', '2024-09-15 03:07:50', NULL),
+('T0000002', 'M0000002', 'B0000002', '2024-09-15', '2024-09-15', '2024-09-15', 0, '2024-09-15 03:05:35', '2024-09-15 03:07:57', NULL);
 
 -- --------------------------------------------------------
 
@@ -123,7 +126,7 @@ INSERT INTO `transactions` (`id`, `member_id`, `book_id`, `lending_date`, `retur
 --
 
 CREATE TABLE `users` (
-  `user_id` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `username` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `privilege` enum('Administrator') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
@@ -133,8 +136,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `password`, `privilege`) VALUES
-('jkgeOyswcB1qcL1R', 'administrator', '$2y$10$TLUonYIAMPLWtp8p.5GYhuZ1dsCU.tDOA3Pg1MIoVNJsiB1/ad3fG', 'Administrator');
+INSERT INTO `users` (`id`, `username`, `password`, `privilege`) VALUES
+('jkgeOyswcB1qcL1R', 'administrator', '$2y$10$LxkSds.TUQmovKyWPTgAaeh..Zkm/MSVN3ReHT9b2Iqp5A4u48qAe', 'Administrator');
 
 --
 -- Indexes for dumped tables
@@ -168,7 +171,7 @@ ALTER TABLE `transactions`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
