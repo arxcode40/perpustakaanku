@@ -136,4 +136,17 @@ class BookLending extends CI_Controller {
 
 		redirect('peminjaman');
 	}
+
+	public function report()
+	{
+		$data['settings'] = $this->settings;
+		$data['settings']['application_theme'] = 'dark';
+		$data['title'] = 'Laporan Data Peminjaman';
+		$data['theme'] = 'light';
+		$data['lendings'] = $this->lending_model->all();
+
+		$this->load->view('templates/begin', $data);
+		$this->load->view('lending/report');
+		$this->load->view('templates/end');
+	}
 }

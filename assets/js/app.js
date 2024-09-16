@@ -32,6 +32,35 @@ function showPassword() {
   }
 }
 
+function tableToCSV(name, title, timestamp) {
+  $("#reportTable").tableToCsv({
+    filename: `Laporan ${name}_${title}_${timestamp}.csv`,
+    separator: ';'
+  });
+}
+
+function tableToPDF(name, title, timestamp) {
+  html2pdf(document.getElementById("reportPage"), {
+    filename: `Laporan ${name}_${title}_${timestamp}.pdf`,
+    html2canvas: {
+      scale: 4
+    },
+    image: {
+      quality: 1,
+      type: 'jpeg'
+    },
+  });
+}
+
+function tableToExcel(name, title, timestamp) {
+  TableToExcel.convert(document.getElementById("reportTable"), {
+    name: `Laporan ${name}_${title}_${timestamp}.xlsx`,
+    sheet: {
+      name: "Sheet 1"
+    }
+  });
+}
+
 $("#dataTable").DataTable({
   fixedColumns: true,
   language: {

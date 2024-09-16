@@ -1,64 +1,25 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
-<html lang="en">
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+<!doctype html>
+<html lang="id">
 <head>
-<meta charset="utf-8">
-<title>Error</title>
-<style type="text/css">
+	<meta charset="utf-8" />
+	<meta content="initial-scale=1.0, width=device-width" name="viewport" />
+	<meta content="ie=edge" http-equiv="X-UA-Compatible" />
+	<meta content="light" name="color-scheme" />
+	<meta content="#0d6efd" name="theme-color" />
 
-::selection { background-color: #E13300; color: white; }
-::-moz-selection { background-color: #E13300; color: white; }
+	<link href="/favicon.svg" rel="icon shortcut" type="image/x-icon">
+	<link href="/favicon.svg" rel="apple-touch-icon">
+	<title><?= $status_code ?> | <?= preg_replace('/(<p>|<\/p>)/', '', $message) ?></title>
 
-body {
-	background-color: #fff;
-	margin: 40px;
-	font: 13px/20px normal Helvetica, Arial, sans-serif;
-	color: #4F5155;
-}
-
-a {
-	color: #003399;
-	background-color: transparent;
-	font-weight: normal;
-}
-
-h1 {
-	color: #444;
-	background-color: transparent;
-	border-bottom: 1px solid #D0D0D0;
-	font-size: 19px;
-	font-weight: normal;
-	margin: 0 0 14px 0;
-	padding: 14px 15px 10px 15px;
-}
-
-code {
-	font-family: Consolas, Monaco, Courier New, Courier, monospace;
-	font-size: 12px;
-	background-color: #f9f9f9;
-	border: 1px solid #D0D0D0;
-	color: #002166;
-	display: block;
-	margin: 14px 0 14px 0;
-	padding: 12px 10px 12px 10px;
-}
-
-#container {
-	margin: 10px;
-	border: 1px solid #D0D0D0;
-	box-shadow: 0 0 8px #D0D0D0;
-}
-
-p {
-	margin: 12px 15px 12px 15px;
-}
-</style>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
-<body>
-	<div id="container">
-		<h1><?php echo $heading; ?></h1>
-		<?php echo $message; ?>
+<body class="bg-gradient container-fluid d-flex flex-column min-vh-100 py-3 text-bg-primary">
+	<div class="hstack gap-3 m-auto">		
+		<h1 class="mb-0"><?= $status_code ?></h1>
+		<div class="vr"></div>
+		<h1 class="mb-0"><?= preg_replace('/(<p>|<\/p>)/', '', $message) ?></h1>
 	</div>
 </body>
 </html>

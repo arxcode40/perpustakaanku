@@ -11,7 +11,7 @@
 
 		<!-- Navbar body -->
 		<div class="collapse navbar-collapse" id="navbarCollapse">
-			<ul class="ms-auto nav nav-pills">
+			<ul class="flex-column flex-lg-row ms-auto nav nav-pills">
 				<!-- Dashboard link -->
 				<li class="nav-item">
 					<a class="<?= $this->uri->segment(1) !== NULL ?: 'active' ?> nav-link" href="/">
@@ -27,7 +27,7 @@
 						Data Master
 					</a>
 
-					<ul class="dropdown-menu dropdown-menu-end">
+					<ul class="dropdown-menu dropdown-menu-lg-end">
 						<li>
 							<h6 class="dropdown-header">
 							<i class="bi bi-database-fill"></i>
@@ -68,7 +68,7 @@
 						Administrator
 					</a>
 
-					<ul class="dropdown-menu dropdown-menu-end">
+					<ul class="dropdown-menu dropdown-menu-lg-end">
 						<li>
 							<h6 class="dropdown-header">
 								<i class="bi bi-person-circle"></i>
@@ -84,7 +84,7 @@
 						<li>
 							<a class="<?= $this->uri->segment(1) !== 'pengaturan' ?: 'active' ?> dropdown-item" href="/pengaturan/">
 								<i class="bi bi-gear-fill"></i>
-								pengaturan
+								Pengaturan
 							</a>
 						</li>
 						<li>

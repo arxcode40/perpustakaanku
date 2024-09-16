@@ -15,7 +15,7 @@ $hook['pre_system'] = function()
 {
 	if (ENVIRONMENT === 'maintenance')
 	{
-		show_error('Server is under maintenance', 503);
+		show_error('Service Unavailable', 503);
 
 		return;
 	}

@@ -132,4 +132,17 @@ class Book extends CI_Controller {
 
 		redirect('buku');
 	}
+
+	public function report()
+	{
+		$data['settings'] = $this->settings;
+		$data['settings']['application_theme'] = 'dark';
+		$data['title'] = 'Laporan Data Buku';
+		$data['theme'] = 'light';
+		$data['books'] = $this->book_model->all();
+
+		$this->load->view('templates/begin', $data);
+		$this->load->view('book/report');
+		$this->load->view('templates/end');
+	}
 }

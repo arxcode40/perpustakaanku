@@ -29,7 +29,7 @@
 				</h5>
 				<div class="dropdown me-1">
 					<button class="btn btn-secondary btn-sm dropdown-toggle shadow" data-bs-toggle="dropdown" type="button">
-						<i class="bi bi-box-arrow-up"></i>
+						<i class="bi bi-upload"></i>
 						<span class="d-none d-sm-inline">Ekspor</span>
 					</button>
 
@@ -37,33 +37,33 @@
 					<ul class="dropdown-menu dropdown-menu-end">
 						<li>
 							<h6 class="dropdown-header">
-								<i class="bi bi-box-arrow-up"></i>
+								<i class="bi bi-upload"></i>
 								Ekspor
 							</h6>
 						</li>
 						<li>
-							<button class="dropdown-item" type="button">
+							<button class="dropdown-item" onclick="tableToCSV('<?= $settings['application_name'] ?>', '<?= $title ?>', '<?= mdate('%Y%m%d%H%i%s') ?>');" type="button">
 								<i class="bi bi-filetype-csv"></i>
 								CSV
 							</button>
 						</li>
 						<li>
-							<button class="dropdown-item" type="button">
+							<button class="dropdown-item" onclick="tableToExcel('<?= $settings['application_name'] ?>', '<?= $title ?>', '<?= mdate('%Y%m%d%H%i%s') ?>');" type="button">
 								<i class="bi bi-filetype-xlsx"></i>
 								Excel
 							</button>
 						</li>
 						<li>
-							<button class="dropdown-item" type="button">
+							<button class="dropdown-item" onclick="tableToPDF('<?= $settings['application_name'] ?>', '<?= $title ?>', '<?= mdate('%Y%m%d%H%i%s') ?>');" type="button">
 								<i class="bi bi-filetype-pdf"></i>
 								PDF
 							</button>
 						</li>
 						<li>
-							<button class="dropdown-item" type="button">
+							<a class="dropdown-item" href="/anggota/laporan/" target="_blank">
 								<i class="bi bi-printer-fill"></i>
 								Cetak
-							</button>
+							</a>
 						</li>
 					</ul>
 				</div>
@@ -119,6 +119,45 @@
 					</table>
 				</div>
 			</div>
+		</div>
+	</div>
+
+	<!-- Report table -->
+	<div data-bs-theme="light" hidden="hidden">
+		<div class="container py-3 text-body-emphasis" id="reportPage">
+			<h4 class="mb-0 text-center">Laporan <?= $settings['application_name'] ?></h4>
+			<h4 class="mb-3 text-center"><?= $title ?></h4>
+
+			<table class="align-middle mb-0 table table-borderless table-printed table-sm w-100" id="reportTable">
+				<!-- Table header -->
+				<thead>
+					<tr class="align-middle">
+						<th class="text-start" scope="col">#</th>
+						<th scope="col">Kode</th>
+						<th scope="col">Nama</th>
+						<th scope="col">Jenis Kelamin</th>
+						<th scope="col">Email</th>
+						<th class="text-start" scope="col">No. Telp</th>
+						<th scope="col">Alamat</th>
+					</tr>
+				</thead>
+
+				<!-- Table body -->
+				<tbody class="table-group-divider">
+					<?php $i = 1 ?>
+					<?php foreach ($members as $member): ?>
+						<tr class="align-middle">
+							<th class="text-start" scope="row"><?= $i++ ?></th>
+							<td><?= html_escape($member['id']) ?></td>
+							<td><?= html_escape($member['fullname']) ?></td>
+							<td><?= html_escape($member['gender']) ?></td>
+							<td><?= html_escape($member['email']) ?></td>
+							<td class="text-start"><?= html_escape($member['phone_number']) ?></td>
+							<td><?= html_escape($member['address']) ?></td>
+						</tr>
+					<?php endforeach ?>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </main>

@@ -1,11 +1,11 @@
 <!doctype html>
-<html data-bs-theme="<?= $settings['application_theme'] ?>" lang="id">
+<html data-bs-theme="<?= $theme ?? $settings['application_theme'] ?>" lang="id">
 <head>
 	<!-- Metadata -->
 	<meta charset="utf-8" />
 	<meta content="initial-scale=1.0, width=device-width" name="viewport" />
 	<meta content="ie=edge" http-equiv="X-UA-Compatible" />
-	<meta content="light" name="color-scheme" />
+	<meta content="<?= $settings['application_theme'] ?>" name="color-scheme" />
 	<meta content="#0d6efd" name="theme-color" />
 
 	<!-- Browser tab display -->

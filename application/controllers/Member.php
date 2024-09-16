@@ -140,4 +140,17 @@ class Member extends CI_Controller {
 
 		redirect('anggota');
 	}
+
+	public function report()
+	{
+		$data['settings'] = $this->settings;
+		$data['settings']['application_theme'] = 'dark';
+		$data['title'] = 'Laporan Data Anggota';
+		$data['theme'] = 'light';
+		$data['members'] = $this->member_model->all();
+
+		$this->load->view('templates/begin', $data);
+		$this->load->view('member/report');
+		$this->load->view('templates/end');
+	}
 }

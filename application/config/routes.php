@@ -56,21 +56,25 @@ $route['anggota'] = 'member/index';
 $route['anggota/tambah'] = 'member/create';
 $route['anggota/ubah/(:any)'] = 'member/update/$1';
 $route['anggota/hapus']['POST'] = 'member/delete';
+$route['anggota/laporan'] = 'member/report';
 
 $route['buku'] = 'book/index';
 $route['buku/tambah'] = 'book/create';
 $route['buku/ubah/(:any)'] = 'book/update/$1';
 $route['buku/hapus']['POST'] = 'book/delete';
+$route['buku/laporan'] = 'book/report';
 
 $route['peminjaman'] = 'booklending/index';
 $route['peminjaman/tambah'] = 'booklending/create';
 $route['peminjaman/ubah/(:any)'] = 'booklending/update/$1';
 $route['peminjaman/hapus']['POST'] = 'booklending/delete';
+$route['peminjaman/laporan'] = 'booklending/report';
 
 $route['pengembalian'] = 'bookreturn/index';
 $route['pengembalian/tambah'] = 'bookreturn/create';
 $route['pengembalian/ubah/(:any)'] = 'bookreturn/update/$1';
 $route['pengembalian/hapus']['POST'] = 'bookreturn/delete';
+$route['pengembalian/laporan'] = 'bookreturn/report';
 
 $route['profil'] = 'user/index';
 $route['pengaturan'] = 'setting/index';

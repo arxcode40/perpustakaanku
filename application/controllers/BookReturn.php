@@ -113,4 +113,17 @@ class BookReturn extends CI_Controller {
 
 		redirect('pengembalian');
 	}
+
+	public function report()
+	{
+		$data['settings'] = $this->settings;
+		$data['settings']['application_theme'] = 'dark';
+		$data['title'] = 'Laporan Data Pengembalian';
+		$data['theme'] = 'light';
+		$data['returns'] = $this->return_model->all();
+
+		$this->load->view('templates/begin', $data);
+		$this->load->view('return/report');
+		$this->load->view('templates/end');
+	}
 }
