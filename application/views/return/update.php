@@ -5,7 +5,7 @@
 		
 		<!-- Breadcrumb -->
 		<nav class="mb-3">
-			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow">
+			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow" data-aos="fade-right">
 				<li class="breadcrumb-item">
 					<a class="link-underline link-underline-opacity-0" href="/">
 						<i class="bi bi-house-door-fill"></i>
@@ -26,7 +26,7 @@
 		</nav>
 
 		<!-- Return update form -->
-		<?= form_open(uri_string(), array('class' => 'card shadow')) ?>
+		<?= form_open(uri_string(), array('class' => 'card shadow', 'data-aos' => 'fade', 'data-aos-delay' => 100)) ?>
 			<!-- Card header -->
 			<div class="align-items-center card-header d-flex">
 				<h5 class="mb-0 me-auto">

@@ -6,7 +6,7 @@
 		<table class="align-middle border-black mb-0 table table-bordered table-sm w-100">
 			<!-- Table header -->
 			<thead>
-				<tr class="align-middle">
+				<tr class="align-middle table-dark">
 					<th class="text-start" scope="col">#</th>
 					<th class="text-start" scope="col">Kode</th>
 					<th scope="col">Nama</th>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 16, 2024 at 04:46 AM
+-- Generation Time: Sep 17, 2024 at 03:57 AM
 -- Server version: 9.0.0
 -- PHP Version: 8.3.10
 
@@ -71,6 +71,23 @@ CREATE TABLE `members` (
 INSERT INTO `members` (`id`, `fullname`, `gender`, `email`, `phone_number`, `address`, `created_at`, `updated_at`, `deleted_at`) VALUES
 ('M0000001', 'Arya Putra Sadewa', 'Laki-laki', 'aryaputrasadewa40@gmail.com', '0895339792382', 'Legok, Kab. Tangerang.', '2024-09-10 02:31:38', '2024-09-11 00:27:54', NULL),
 ('M0000002', 'John Doe', 'Laki-laki', 'johndoe@gmail.com', '08123456789', '', '2024-09-15 02:58:52', '2024-09-15 02:58:52', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `version` bigint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`version`) VALUES
+(0);
 
 -- --------------------------------------------------------
 

@@ -5,7 +5,7 @@
 		
 		<!-- Breadcrumb -->
 		<nav class="mb-3">
-			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow">
+			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow" data-aos="fade-right">
 				<li class="breadcrumb-item">
 					<a class="link-underline link-underline-opacity-0" href="/">
 						<i class="bi bi-house-door-fill"></i>
@@ -20,7 +20,7 @@
 		</nav>
 
 		<!-- Returns datatable -->
-		<div class="card shadow">
+		<div class="card shadow" data-aos="fade" data-aos-delay="100">
 			<!-- Card Header -->
 			<div class="align-items-center card-header d-flex">
 				<h5 class="mb-0 me-auto">
@@ -123,15 +123,15 @@
 	</div>
 
 	<!-- Report table -->
-	<div data-bs-theme="light" hidden="hidden">
-		<div class="container py-3 text-body-emphasis" id="reportPage">
+	<div hidden="hidden">
+		<div class="container py-3 text-body-emphasis" data-bs-theme="light" id="reportPage">
 			<h4 class="mb-0 text-center">Laporan <?= $settings['application_name'] ?></h4>
 			<h4 class="mb-3 text-center"><?= $title ?></h4>
 
 			<table class="align-middle mb-0 table table-borderless table-printed table-sm w-100" id="reportTable">
 				<!-- Table header -->
 				<thead>
-					<tr class="align-middle">
+					<tr class="align-middle table-dark">
 						<th class="text-start" scope="col">#</th>
 						<th class="text-start" scope="col">Kode</th>
 						<th scope="col">Nama</th>

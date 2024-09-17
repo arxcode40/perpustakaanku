@@ -77,7 +77,7 @@
 						</li>
 						<li>
 							<a class="<?= $this->uri->segment(1) !== 'profil' ?: 'active' ?> dropdown-item" href="/profil/">
-								<i class="bi bi-person-gear"></i>
+								<i class="bi bi-person-fill"></i>
 								Profil saya
 							</a>
 						</li>

@@ -5,7 +5,7 @@
 				
 		<!-- Breadcrumb -->
 		<nav class="mb-3">
-			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow">
+			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow" data-aos="fade-right">
 				<li class="breadcrumb-item">
 					<a class="link-underline link-underline-opacity-0" href="/">
 						<i class="bi bi-house-door-fill"></i>
@@ -23,7 +23,7 @@
 		<div class="g-3 row">
 			<!-- Card panel -->
 			<div class="col-sm-6 col-md-4 col-lg-3">
-				<div class="card shadow">
+				<div class="card shadow" data-aos="fade-up" data-aos-delay="50">
 					<!-- Card header -->
 					<h5 class="card-header">Data anggota</h5>
 
@@ -44,7 +44,7 @@
 
 			<!-- Card panel -->
 			<div class="col-sm-6 col-md-4 col-lg-3">
-				<div class="card shadow">
+				<div class="card shadow" data-aos="fade-up" data-aos-delay="100">
 					<!-- Card header -->
 					<h5 class="card-header">Data buku</h5>
 
@@ -65,7 +65,7 @@
 
 			<!-- Card panel -->
 			<div class="col-sm-6 col-md-4 col-lg-3">
-				<div class="card shadow">
+				<div class="card shadow" data-aos="fade-up" data-aos-delay="150">
 					<!-- Card header -->
 					<h5 class="card-header">Data peminjaman</h5>
 
@@ -86,7 +86,7 @@
 
 			<!-- Card panel -->
 			<div class="col-sm-6 col-md-4 col-lg-3">
-				<div class="card shadow">
+				<div class="card shadow" data-aos="fade-up" data-aos-delay="200">
 					<!-- Card header -->
 					<h5 class="card-header">Data pengembalian</h5>
 

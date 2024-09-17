@@ -20,6 +20,15 @@ function currencyFormat() {
   })
 }
 
+function returnDetail() {
+  const id = $(event.target).val();
+  const data = returns.filter(data => data.id === id)[0];
+
+  $("#fullname").val(data.fullname);
+  $("#title").val(data.title);
+  $("#checkoutDate").attr("min", data.lending_date);
+}
+
 function showPassword() {
   const toggler = $(event.target);
   const target = $(toggler).prev();
@@ -39,6 +48,15 @@ function tableToCSV(name, title, timestamp) {
   });
 }
 
+function tableToExcel(name, title, timestamp) {
+  TableToExcel.convert(document.getElementById("reportTable"), {
+    name: `Laporan ${name}_${title}_${timestamp}.xlsx`,
+    sheet: {
+      name: "Sheet 1"
+    }
+  });
+}
+
 function tableToPDF(name, title, timestamp) {
   html2pdf(document.getElementById("reportPage"), {
     filename: `Laporan ${name}_${title}_${timestamp}.pdf`,
@@ -52,23 +70,6 @@ function tableToPDF(name, title, timestamp) {
   });
 }
 
-function tableToExcel(name, title, timestamp) {
-  TableToExcel.convert(document.getElementById("reportTable"), {
-    name: `Laporan ${name}_${title}_${timestamp}.xlsx`,
-    sheet: {
-      name: "Sheet 1"
-    }
-  });
-}
-
-$("#dataTable").DataTable({
-  fixedColumns: true,
-  language: {
-    url: "https://cdn.datatables.net/plug-ins/2.1.5/i18n/id.json"
-  },
-  scrollX: true,
-});
-
 $(document).on("scroll", function() {
   if ($(document).scrollTop() > 20) {
     $("#scrollToTop").fadeIn("fast");
@@ -77,11 +78,16 @@ $(document).on("scroll", function() {
   }
 });
 
-function returnDetail() {
-  const id = $(event.target).val();
-  const data = returns.filter(data => data.id === id)[0];
+AOS.init({
+  duration: 500,
+  easing: 'ease-in-out-quart',
+  once: true
+});
 
-  $("#fullname").val(data.fullname);
-  $("#title").val(data.title);
-  $("#checkoutDate").attr("min", data.lending_date);
-}
+$("#dataTable").DataTable({
+  fixedColumns: true,
+  language: {
+    url: "https://cdn.datatables.net/plug-ins/2.1.5/i18n/id.json"
+  },
+  scrollX: true,
+});
