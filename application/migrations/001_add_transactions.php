@@ -51,6 +51,8 @@ class Migration_Add_transactions extends CI_Migration {
     	)
     );
     $this->dbforge->add_key('id', TRUE);
+    $this->dbforge->add_key('member_id');
+    $this->dbforge->add_key('book_id');
     $this->dbforge->create_table(
     	'transactions', TRUE, array(
 	    	'CHARACTER SET' => 'utf8mb4',
