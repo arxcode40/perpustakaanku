@@ -7,7 +7,7 @@
 		<nav class="mb-3">
 			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow" data-aos="fade-right">
 				<li class="breadcrumb-item">
-					<a class="link-underline link-underline-opacity-0" href="/">
+					<a class="link-underline link-underline-opacity-0" href="<?= base_url() ?>">
 						<i class="bi bi-house-door-fill"></i>
 						Beranda
 					</a>
@@ -60,14 +60,14 @@
 							</button>
 						</li>
 						<li>
-							<a class="dropdown-item" href="/pengembalian/laporan/" target="_blank">
+							<a class="dropdown-item" href="<?= base_url(array('pengembalian', 'laporan')) ?>" target="_blank">
 								<i class="bi bi-printer-fill"></i>
 								Cetak
 							</a>
 						</li>
 					</ul>
 				</div>
-				<a class="btn btn-primary btn-sm shadow" href="/pengembalian/tambah/">
+				<a class="btn btn-primary btn-sm shadow" href="<?= base_url(array('pengembalian', 'tambah')) ?>">
 					<i class="bi bi-plus-lg"></i>
 					<span class="d-none d-sm-inline">Tambah</span>
 				</a>
@@ -102,7 +102,7 @@
 									<td><?= html_escape(nice_date($return['checkout_date'], 'd M Y')) ?></td>
 									<td>Rp<?= html_escape(number_format($return['fine'], 0, ',', '.')) ?></td>
 									<td class="text-nowrap">
-										<a class="btn btn-primary btn-sm shadow" href="/pengembalian/ubah/<?= html_escape($return['id']) ?>">
+										<a class="btn btn-primary btn-sm shadow" href="<?= base_url(array('pengembalian', 'ubah', html_escape($return['id']))) ?>">
 											<i class="bi bi-pencil-square"></i>
 											<span class="d-none d-sm-inline">Ubah</span>
 										</a>

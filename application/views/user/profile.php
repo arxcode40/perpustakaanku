@@ -7,13 +7,13 @@
 		<nav class="mb-3">
 			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow" data-aos="fade-right">
 				<li class="breadcrumb-item">
-					<a class="link-underline link-underline-opacity-0" href="/">
+					<a class="link-underline link-underline-opacity-0" href="<?= base_url() ?>">
 						<i class="bi bi-house-door-fill"></i>
 						Beranda
 					</a>
 				</li>
 				<li class="active breadcrumb-item">
-					<i class="bi bi-person-gear"></i>
+					<i class="bi bi-person-fill"></i>
 					Profil saya
 				</li>
 			</ol>
@@ -23,7 +23,7 @@
 		<?= form_open(uri_string(), array('class' => 'card shadow', 'data-aos' => 'fade', 'data-aos-delay' => 100)) ?>
 			<!-- Card header -->
 			<h5 class="card-header">
-				<i class="bi bi-person-gear"></i>
+				<i class="bi bi-person-fill"></i>
 				Profil saya
 			</h5>
 

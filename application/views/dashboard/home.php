@@ -7,7 +7,7 @@
 		<nav class="mb-3">
 			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow" data-aos="fade-right">
 				<li class="breadcrumb-item">
-					<a class="link-underline link-underline-opacity-0" href="/">
+					<a class="link-underline link-underline-opacity-0" href="<?= base_url() ?>">
 						<i class="bi bi-house-door-fill"></i>
 						Beranda
 					</a>
@@ -34,7 +34,7 @@
 
 					<!-- Card footer -->
 					<div class="card-footer">
-						<a class="btn btn-primary" href="/anggota/">
+						<a class="btn btn-primary" href="<?= base_url('anggota') ?>">
 							Lihat selengkapnya
 							<i class="bi bi-arrow-right"></i>
 						</a>
@@ -55,7 +55,7 @@
 
 					<!-- Card footer -->
 					<div class="card-footer">
-						<a class="btn btn-primary" href="/buku/">
+						<a class="btn btn-primary" href="<?= base_url('buku') ?>">
 							Lihat selengkapnya
 							<i class="bi bi-arrow-right"></i>
 						</a>
@@ -76,7 +76,7 @@
 
 					<!-- Card footer -->
 					<div class="card-footer">
-						<a class="btn btn-primary" href="/peminjaman/">
+						<a class="btn btn-primary" href="<?= base_url('peminjaman') ?>">
 							Lihat selengkapnya
 							<i class="bi bi-arrow-right"></i>
 						</a>
@@ -97,7 +97,7 @@
 
 					<!-- Card footer -->
 					<div class="card-footer">
-						<a class="btn btn-primary" href="/pengembalian/">
+						<a class="btn btn-primary" href="<?= base_url('pengembalian') ?>">
 							Lihat selengkapnya
 							<i class="bi bi-arrow-right"></i>
 						</a>

@@ -9,8 +9,8 @@
 	<meta content="#0d6efd" name="theme-color" />
 
 	<!-- Browser tab display -->
-	<link href="/favicon.svg" rel="apple-touch-icon">
-	<link href="/favicon.svg" rel="icon shortcut" type="image/x-icon">
+	<link href="<?= base_url('favicon.svg') ?>" rel="apple-touch-icon">
+	<link href="<?= base_url('favicon.svg') ?>" rel="icon shortcut" type="image/x-icon">
 	<title><?= $title ?> | <?= html_escape($settings['application_name']) ?></title>
 
 	<!-- Stylesheet -->
@@ -19,6 +19,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/aos/dist/aos.min.css" rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet" />
-	<link href="/assets/css/style.css" rel="stylesheet">
+	<link href="<?= base_url(array('assets', 'css', 'style.css')) ?>" rel="stylesheet">
 </head>
 <body class="<?= $this->uri->segment(1) !== 'masuk' ? ($settings['application_theme'] === 'dark' ?: 'bg-body-secondary') : 'bg-primary-subtle bg-gradient' ?> d-flex flex-column min-dvh-100">

@@ -7,13 +7,13 @@
 		<nav class="mb-3">
 			<ol class="bg-body-tertiary breadcrumb p-3 rounded shadow" data-aos="fade-right">
 				<li class="breadcrumb-item">
-					<a class="link-underline link-underline-opacity-0" href="/">
+					<a class="link-underline link-underline-opacity-0" href="<?= base_url() ?>">
 						<i class="bi bi-house-door-fill"></i>
 						Beranda
 					</a>
 				</li>
 				<li class="breadcrumb-item">
-					<a class="link-underline link-underline-opacity-0" href="/pengembalian/">
+					<a class="link-underline link-underline-opacity-0" href="<?= base_url('pengembalian') ?>">
 						<i class="bi bi-box-arrow-in-down"></i>
 						Data pengembalian
 					</a>
@@ -33,7 +33,7 @@
 					<i class="bi bi-plus-lg"></i>
 					Tambah data pengembalian
 				</h5>
-				<a class="btn btn-secondary btn-sm shadow" href="/pengembalian/">
+				<a class="btn btn-secondary btn-sm shadow" href="<?= base_url('pengembalian') ?>">
 					<i class="bi bi-arrow-left"></i>
 					<span class="d-none d-sm-inline">Kembali</span>
 				</a>

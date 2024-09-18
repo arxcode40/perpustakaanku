@@ -1,8 +1,8 @@
 <nav class="bg-body-tertiary border-bottom navbar navbar-expand-lg shadow sticky-top">
 	<div class="container">
 		<!-- Navbar header -->
-		<a class="align-items-center d-flex navbar-brand" href="/">
-			<img alt="Logo PerpustakaanKu" loading="lazy" src="/favicon.svg" width="24">
+		<a class="align-items-center d-flex navbar-brand" href="<?= base_url() ?>">
+			<img alt="Logo PerpustakaanKu" loading="lazy" src="<?= base_url('favicon.svg') ?>" width="24">
 			<span class="fw-medium ms-2"><?= html_escape($settings['application_name']) ?></span>
 		</a>
 		<button class="navbar-toggler" data-bs-target="#navbarCollapse" data-bs-toggle="collapse" type="button">
@@ -14,7 +14,7 @@
 			<ul class="flex-column flex-lg-row ms-auto nav nav-pills">
 				<!-- Dashboard link -->
 				<li class="nav-item">
-					<a class="<?= $this->uri->segment(1) !== NULL ?: 'active' ?> nav-link" href="/">
+					<a class="<?= $this->uri->segment(1) !== NULL ?: 'active' ?> nav-link" href="<?= base_url() ?>">
 						<i class="bi bi-speedometer"></i>
 						Dasbor
 					</a>
@@ -35,25 +35,25 @@
 							</h6>
 						</li>
 						<li>
-							<a class="<?= $this->uri->segment(1) !== 'anggota' ?: 'active' ?> dropdown-item" href="/anggota/">
+							<a class="<?= $this->uri->segment(1) !== 'anggota' ?: 'active' ?> dropdown-item" href="<?= base_url('anggota') ?>">
 								<i class="bi bi-person-standing"></i>
 								Data anggota
 							</a>
 						</li>
 						<li>
-							<a class="<?= $this->uri->segment(1) !== 'buku' ?: 'active' ?> dropdown-item" href="/buku/">
+							<a class="<?= $this->uri->segment(1) !== 'buku' ?: 'active' ?> dropdown-item" href="<?= base_url('buku') ?>">
 								<i class="bi bi-book-half"></i>
 								Data buku
 							</a>
 						</li>
 						<li>
-							<a class="<?= $this->uri->segment(1) !== 'peminjaman' ?: 'active' ?> dropdown-item" href="/peminjaman/">
+							<a class="<?= $this->uri->segment(1) !== 'peminjaman' ?: 'active' ?> dropdown-item" href="<?= base_url('peminjaman') ?>">
 								<i class="bi bi-box-arrow-up"></i>
 								Data peminjaman
 							</a>
 						</li>
 						<li>
-							<a class="<?= $this->uri->segment(1) !== 'pengembalian' ?: 'active' ?> dropdown-item" href="/pengembalian/">
+							<a class="<?= $this->uri->segment(1) !== 'pengembalian' ?: 'active' ?> dropdown-item" href="<?= base_url('pengembalian') ?>">
 								<i class="bi bi-box-arrow-in-down"></i>
 								Data pengembalian
 							</a>
@@ -76,13 +76,13 @@
 							</h6>
 						</li>
 						<li>
-							<a class="<?= $this->uri->segment(1) !== 'profil' ?: 'active' ?> dropdown-item" href="/profil/">
+							<a class="<?= $this->uri->segment(1) !== 'profil' ?: 'active' ?> dropdown-item" href="<?= base_url('profil') ?>">
 								<i class="bi bi-person-fill"></i>
 								Profil saya
 							</a>
 						</li>
 						<li>
-							<a class="<?= $this->uri->segment(1) !== 'pengaturan' ?: 'active' ?> dropdown-item" href="/pengaturan/">
+							<a class="<?= $this->uri->segment(1) !== 'pengaturan' ?: 'active' ?> dropdown-item" href="<?= base_url('pengaturan') ?>">
 								<i class="bi bi-gear-fill"></i>
 								Pengaturan
 							</a>
@@ -91,7 +91,7 @@
 							<hr class="dropdown-divider" />
 						</li>
 						<li>
-							<a class="dropdown-item" href="/keluar/">
+							<a class="dropdown-item" href="<?= base_url('keluar') ?>">
 								<i class="bi bi-box-arrow-right"></i>
 								Keluar
 							</a>
