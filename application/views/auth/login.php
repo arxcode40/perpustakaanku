@@ -1,6 +1,14 @@
 <main class="my-auto">
 	<div class="container-auth py-3">
-		<?= form_open(uri_string(), array('class' => 'card shadow', 'data-aos' => 'fade')) ?>
+		<?=
+			form_open(
+				uri_string(),
+				array(
+					'class' => 'card shadow',
+					'data-aos' => 'fade'
+				)
+			)
+		?>
 			<!-- Form header -->
 			<h5 class="card-header">
 				<i class="bi bi-box-arrow-in-right"></i>
@@ -10,7 +18,12 @@
 			<!-- Form body -->
 			<div class="card-body">
 				<!-- Form alert -->
-				<?php $this->load->view('templates/alert', array('alert' => $this->session->flashdata('alert'))) ?>
+				<?php
+					$this->load->view(
+						'templates/alert',
+						array('alert' => $this->session->flashdata('alert'))
+					)
+				?>
 				
 				<div class="g-3 row">
 					<!-- Username input -->
@@ -44,14 +57,21 @@
 
 			<!-- Form action -->
 			<div class="card-footer">
-				<button class="btn btn-primary shadow" type="submit">
-					<i class="bi bi-box-arrow-in-right"></i>
-					Masuk
-				</button>
-				<button class="btn btn-secondary shadow" type="reset">
-					<i class="bi bi-x-lg"></i>
-					Batal
-				</button>
+				<?php
+					$this->load->view(
+						'templates/form_action',
+						array(
+							'submit' => array(
+								'icon' => 'box-arrow-in-right',
+								'name' => 'Masuk'
+							),
+							'reset' => array(
+								'icon' => 'x-lg',
+								'name' => 'Batal'
+							)
+						)
+					)
+				?>
 			</div>
 		<?= form_close() ?>
 	</div>

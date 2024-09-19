@@ -1,0 +1,1 @@
+<textarea class="form-control <?= form_error($name) === '' ?: 'is-invalid' ?>" id="<?= $key ?>" name="<?= $name ?>" placeholder="Masukkan <?= $placeholder ?>"><?= html_escape(set_value($name, $value)) ?></textarea>

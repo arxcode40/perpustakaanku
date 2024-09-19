@@ -1,4 +1,3 @@
-<!-- Alert message -->
 <?php if ($alert !== NULL): ?>
 	<div class="alert alert-<?= html_escape($alert['status']) ?> alert-dismissible fade shadow show">
 		<i class="bi bi-<?= html_escape($alert['icon']) ?>-circle-fill"></i>
