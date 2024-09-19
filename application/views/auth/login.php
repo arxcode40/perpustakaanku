@@ -28,7 +28,9 @@
 				<div class="g-3 row">
 					<!-- Username input -->
 					<div class="col-12">
-						<label class="form-label" for="username">Nama pengguna</label>
+						<label class="form-label" for="username">
+							Nama pengguna<b class="text-danger">*</b>
+						</label>
 						<div class="has-validation input-group">
 							<span class="input-group-text">
 								<i class="bi bi-person-fill"></i>
@@ -40,7 +42,9 @@
 
 					<!-- Password input -->
 					<div class="col-12">
-						<label class="form-label" for="password">Kata sandi</label>
+						<label class="form-label" for="password">
+							Kata sandi<b class="text-danger">*</b>
+						</label>
 						<div class="has-validation input-group">
 							<span class="input-group-text">
 								<i class="bi bi-key-fill"></i>
