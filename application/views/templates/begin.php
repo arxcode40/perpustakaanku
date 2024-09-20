@@ -14,11 +14,11 @@
 	<title><?= $title ?> | <?= html_escape($settings['application_name']) ?></title>
 
 	<!-- Stylesheet -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/aos/dist/aos.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet" />
+	<link href="<?= base_url(array('assets', 'css', 'bootstrap.min.css')) ?>" rel="stylesheet" />
+	<link href="<?= base_url(array('assets', 'css', 'bootstrap-icons.min.css')) ?>" rel="stylesheet" />
+	<link href="<?= base_url(array('assets', 'css', 'aos.min.css')) ?>" rel="stylesheet" />
+	<link href="<?= base_url(array('assets', 'css', 'dataTables.bootstrap5.min.css')) ?>" rel="stylesheet" />
+	<link href="<?= base_url(array('assets', 'css', 'fixedColumns.bootstrap5.min.css')) ?>" rel="stylesheet" />
 	<link href="<?= base_url(array('assets', 'css', 'style.css')) ?>" rel="stylesheet">
 </head>
 <body class="<?= $this->uri->segment(1) !== 'masuk' ? ($settings['application_theme'] === 'dark' ?: 'bg-body-secondary') : 'bg-primary-subtle bg-gradient' ?> d-flex flex-column min-dvh-100">

@@ -36,7 +36,7 @@ class Setting extends CI_Controller {
 
 			$this->load->view('templates/begin', $data);
 			$this->load->view('templates/navbar');
-			$this->load->view('setting/home');
+			$this->load->view('setting/preference');
 			$this->load->view('templates/scrolltop');
 			$this->load->view('templates/footer');
 			$this->load->view('templates/end');

@@ -91,10 +91,12 @@
 							<hr class="dropdown-divider" />
 						</li>
 						<li>
-							<a class="dropdown-item" href="<?= base_url('keluar') ?>">
-								<i class="bi bi-box-arrow-right"></i>
-								Keluar
-							</a>
+							<?= form_open('keluar') ?>
+								<button class="dropdown-item" type="submit">
+									<i class="bi bi-box-arrow-right"></i>
+									Keluar
+								</button>
+							<?= form_close() ?>
 						</li>
 					</ul>
 				</li>

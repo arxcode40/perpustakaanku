@@ -56,7 +56,8 @@
 			array(
 				'name' => 'anggota',
 				'heads' => $thead,
-				'rows' => $tbody)
+				'rows' => $tbody
+			)
 		)
 	?>
 </main>

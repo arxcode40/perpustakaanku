@@ -87,7 +87,7 @@ AOS.init({
 $("#dataTable").DataTable({
   fixedColumns: true,
   language: {
-    url: "https://cdn.datatables.net/plug-ins/2.1.5/i18n/id.json"
+    url: "https://cdn.datatables.net/plug-ins/2.1.6/i18n/id.json"
   },
   scrollX: true,
 });
