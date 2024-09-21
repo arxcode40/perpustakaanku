@@ -1,4 +1,4 @@
-<label class="<?= $width ?> col-form-label d-md-flex" for="<?= $key ?>">
+<<?= $tag ?> class="col-md-4 col-lg-3 col-form-label d-md-flex <?= $tag === 'label' ?: 'pt-0' ?>" <?php if ($key === NULL): ?>for="<?= $key ?>"<?php endif ?>>
 	<?= $name ?><?php if ($required === TRUE): ?><b class="text-danger">*</b><?php endif ?>
 	<span class="d-none d-md-block fw-medium ms-auto">:</span>
-</label>
+</<?= $tag ?>>

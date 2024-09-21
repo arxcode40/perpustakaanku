@@ -1,1 +1,0 @@
-<input <?php if ($autofocus === TRUE): ?>autofocus="autofocus"<?php endif ?> class="form-control <?= form_error($name) === '' ?: 'is-invalid' ?>" id="<?= $key ?>" name="<?= $name ?>" placeholder="Masukkan <?= $placeholder ?>" type="<?= $type ?>" value="<?= html_escape(set_value($name, $value)) ?>" />
