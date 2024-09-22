@@ -2,6 +2,7 @@
 	$this->load->view(
 		'templates/form_open',
 		array(
+			'icon' => $operation === 'Tambah' ? 'plus-lg' : 'pencil-square',
 			'name' => 'anggota'
 		)
 	)
