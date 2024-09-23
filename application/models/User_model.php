@@ -15,6 +15,7 @@ class User_model extends CI_Model {
 
 	public function set($auth_token)
 	{
+		// User data
 		$auth_token = json_decode(base64_decode($auth_token), TRUE);
 		$user_data = array('username' => $this->input->post('username'));
 
@@ -23,6 +24,7 @@ class User_model extends CI_Model {
 			$user_data['password'] = password_hash($this->input->post('new_password'), PASSWORD_DEFAULT);
 		}
 
+		// Update user data
 		$this->db->trans_start();
 		$this->db->set($user_data);
 		$this->db->where('id', $auth_token['id']);

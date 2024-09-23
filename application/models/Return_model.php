@@ -15,8 +15,8 @@ class Return_model extends CI_Model {
 	public function all()
 	{
 		$this->db->select('*, transactions.id AS id');
-		$this->db->join('members', 'members.id = transactions.member_id', 'left');
-		$this->db->join('books', 'books.id = transactions.book_id', 'left');
+		$this->db->join('members', 'members.id = transactions.member_id', 'inner');
+		$this->db->join('books', 'books.id = transactions.book_id', 'inner');
 		$this->db->where('checkout_date IS NOT', 'NULL', FALSE);
 
 		return $this->db->get('transactions')->result_array();
@@ -25,8 +25,8 @@ class Return_model extends CI_Model {
 	public function get($id)
 	{
 		$this->db->select('*, transactions.id AS id');
-		$this->db->join('members', 'members.id = transactions.member_id', 'left');
-		$this->db->join('books', 'books.id = transactions.book_id', 'left');
+		$this->db->join('members', 'members.id = transactions.member_id', 'inner');
+		$this->db->join('books', 'books.id = transactions.book_id', 'inner');
 		$this->db->where('checkout_date IS NOT', 'NULL', FALSE);
 		$this->db->where('transactions.id', $id);
 		$this->db->limit(1);
@@ -43,12 +43,14 @@ class Return_model extends CI_Model {
 		$date_difference = date_diff($return_date, $checkout_date);
 		$fine = (int) date_interval_format($date_difference, '%r%a') * $library_fines;
 
+		// Return data
 		$return_data = array(
 			'checkout_date' => $this->input->post('checkout_date'),
 			'fine' => $fine < 0 ? 0 : $fine,
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
+		// Create return data
 		$this->db->trans_start();
 		$this->db->set($return_data);
 		$this->db->where('id', $this->input->post('id'));
@@ -90,12 +92,14 @@ class Return_model extends CI_Model {
 		$date_difference = date_diff($return_date, $checkout_date);
 		$fine = (int) date_interval_format($date_difference, '%r%a') * $library_fines;
 
+		// Return data
 		$return_data = array(
 			'checkout_date' => $this->input->post('checkout_date'),
 			'fine' => $fine < 0 ? 0 : $fine,
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
+		// Update return data
 		$this->db->trans_start();
 		$this->db->set($return_data);
 		$this->db->where('id', $id);
@@ -130,12 +134,14 @@ class Return_model extends CI_Model {
 
 	public function delete()
 	{
+		// Return data
 		$return_data = array(
 			'checkout_date' => NULL,
 			'fine' => 0,
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
+		// Delete return data
 		$this->db->trans_start();
 		$this->db->set($return_data);
 		$this->db->where('id', $this->input->post('id'));

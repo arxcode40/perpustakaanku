@@ -6,6 +6,8 @@ class Setting extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('setting_model');
+		$this->load->model('auth_model');
 
 		// Middleware
 		if ($this->session->has_userdata('auth_token') === FALSE OR $this->auth_model->user_token_exists($this->session->userdata('auth_token')) === FALSE)
@@ -16,6 +18,7 @@ class Setting extends CI_Controller {
 
 	public function index()
 	{
+		// Form validation rules
 		$this->form_validation->set_rules(
 			'application_name', 'nama aplikasi',
 			array('max_length[64]', 'required', 'trim')
@@ -29,8 +32,10 @@ class Setting extends CI_Controller {
 			array('regex_match[/^([1-9][0-9]{0,2})(\.\d{3})*?$/]', 'required', 'trim')
 		);
 
+		// Run validation
 		if ($this->form_validation->run() === FALSE)
 		{
+			// Preference settings form
 			$data['settings'] = $this->setting_model->get();;
 			$data['title'] = 'Pengaturan';
 
@@ -43,6 +48,7 @@ class Setting extends CI_Controller {
 		}
 		else
 		{
+			// Save preference settings
 			$this->setting_model->set();
 
 			redirect('pengaturan');

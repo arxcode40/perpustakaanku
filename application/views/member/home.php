@@ -30,6 +30,7 @@
 
 		<!-- Members datatable -->
 		<?php $thead = array('#', 'Kode', 'Nama', 'Jenis kelamin', 'Email', 'No. telp', 'Aksi') ?>
+		<?php $tbody = array() ?>
 		<?php foreach ($members as $index => $member): ?>
 			<?php $tbody[] = array($index + 1, $member['id'], $member['fullname'], $member['gender'], $member['email'], $member['phone_number'], $member['id']) ?>
 		<?php endforeach ?>
@@ -39,10 +40,11 @@
 				array(
 					'name' => 'anggota',
 					'heads' => $thead,
-					'rows' => $tbody)
+					'rows' => $tbody
+				)
 			)
 		?>
-		<?php unset($tbody) ?>
+		<?php $tbody = array() ?>
 	</div>
 
 	<!-- Report table -->

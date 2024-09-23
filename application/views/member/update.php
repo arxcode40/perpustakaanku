@@ -38,8 +38,7 @@
 			$this->load->view(
 				'templates/form/member',
 				array(
-					'operation' => 'Tambah',
-					'member' => $member
+					'operation' => 'Ubah',
 				)
 			)
 		?>

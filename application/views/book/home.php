@@ -30,6 +30,7 @@
 
 		<!-- Books datatable -->
 		<?php $thead = array('#', 'Kode', 'Judul', 'Tahun terbit', 'Pengarang', 'Penerbit', 'Aksi') ?>
+		<?php $tbody = array() ?>
 		<?php foreach ($books as $index => $book): ?>
 			<?php $tbody[] = array($index + 1, $book['id'], $book['title'], $book['publication_year'], $book['author'], $book['publisher'], $book['id']) ?>
 		<?php endforeach ?>
@@ -42,7 +43,7 @@
 					'rows' => $tbody)
 			)
 		?>
-		<?php unset($tbody) ?>
+		<?php $tbody = array() ?>
 	</div>
 
 	<!-- Report table -->

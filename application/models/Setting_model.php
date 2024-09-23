@@ -16,6 +16,7 @@ class Setting_model extends CI_Model {
 
 	public function set()
 	{
+		// Settings data
 		$setting_data = array(
 			array(
 				'setting_name' => 'application_name',
@@ -31,6 +32,7 @@ class Setting_model extends CI_Model {
 			),
 		);
 
+		// Update settings data
 		$this->db->trans_start();
 		$this->db->update_batch('settings', $setting_data, 'setting_name');
 		$this->db->trans_complete();

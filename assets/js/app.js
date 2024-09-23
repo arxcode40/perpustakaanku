@@ -32,6 +32,7 @@ function returnDetail() {
 function showPassword() {
   const toggler = $(event.target);
   const target = $(toggler).prev();
+
   if ($(target).attr("type") === "text") {
     $(target).attr("type", "password");
     $(toggler).children().replaceClass("bi-eye", "bi-eye-slash");
@@ -44,7 +45,7 @@ function showPassword() {
 function tableToCSV(name, title, timestamp) {
   $("#reportTable").tableToCsv({
     filename: `Laporan ${name}_${title}_${timestamp}.csv`,
-    separator: ';'
+    separator: ";"
   });
 }
 
@@ -65,7 +66,7 @@ function tableToPDF(name, title, timestamp) {
     },
     image: {
       quality: 1,
-      type: 'jpeg'
+      type: "jpeg"
     },
   });
 }
@@ -80,7 +81,7 @@ $(document).on("scroll", function() {
 
 AOS.init({
   duration: 500,
-  easing: 'ease-in-out-quart',
+  easing: "ease-in-out-quart",
   once: true
 });
 

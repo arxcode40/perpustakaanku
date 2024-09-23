@@ -30,6 +30,7 @@
 
 		<!-- Returns datatable -->
 		<?php $thead = array('#', 'Kode', 'Nama', 'Judul', 'Tanggal pengembalian', 'Denda', 'Aksi') ?>
+		<?php $tbody = array() ?>
 		<?php foreach ($returns as $index => $return): ?>
 			<?php $tbody[] = array($index + 1, $return['id'], $return['fullname'], $return['title'], nice_date($return['checkout_date'], 'd M Y'), 'Rp' . number_format($return['fine'], 0, ',', '.'), $return['id']) ?>
 		<?php endforeach ?>
@@ -43,7 +44,7 @@
 				)
 			)
 		?>
-		<?php unset($tbody) ?>
+		<?php $tbody = array() ?>
 	</div>
 
 	<!-- Report table -->

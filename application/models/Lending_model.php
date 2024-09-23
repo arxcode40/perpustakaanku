@@ -5,8 +5,9 @@ class Lending_model extends CI_Model {
 
 	public function last()
 	{
+		// Parse lending ID
 		$result = $this->db->get('transactions')->last_row('array');
-		$last_id = intval(substr($result['id'], 1));
+		$last_id = intval(substr($result['id'] ?? 'T0000000', 1));
 
 		return 'T' . str_repeat(0, 7 - strlen($last_id)) . ++$last_id;
 	}
@@ -22,8 +23,8 @@ class Lending_model extends CI_Model {
 	public function all()
 	{
 		$this->db->select('*, transactions.id AS id');
-		$this->db->join('members', 'members.id = transactions.member_id', 'left');
-		$this->db->join('books', 'books.id = transactions.book_id', 'left');
+		$this->db->join('members', 'members.id = transactions.member_id', 'inner');
+		$this->db->join('books', 'books.id = transactions.book_id', 'inner');
 
 		return $this->db->get('transactions')->result_array();
 	}
@@ -38,6 +39,7 @@ class Lending_model extends CI_Model {
 
 	public function create()
 	{
+		// Lending data
 		$lending_data = array(
 			'id' => $this->last(),
 			'member_id' => $this->input->post('fullname'),
@@ -48,6 +50,7 @@ class Lending_model extends CI_Model {
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
+		// Create lending data
 		$this->db->trans_start();
 		$this->db->set($lending_data);
 		$this->db->insert('transactions');
@@ -79,6 +82,7 @@ class Lending_model extends CI_Model {
 
 	public function update($id)
 	{
+		// Lending data
 		$lending_data = array(
 			'member_id' => $this->input->post('fullname'),
 			'book_id' => $this->input->post('title'),
@@ -87,6 +91,7 @@ class Lending_model extends CI_Model {
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
+		// Update lending data
 		$this->db->trans_start();
 		$this->db->set($lending_data);
 		$this->db->where('id', $id);
@@ -121,6 +126,7 @@ class Lending_model extends CI_Model {
 
 	public function delete()
 	{
+		// Delete lending data
 		$this->db->trans_start();
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->delete('transactions');

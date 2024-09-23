@@ -65,7 +65,7 @@
 					'tag' => 'label',
 					'key' => 'author',
 					'name' => 'Pengarang buku',
-					'required' => TRUE
+					'required' => FALSE
 				)
 			)
 		?>
@@ -82,7 +82,7 @@
 					'tag' => 'label',
 					'key' => 'publisher',
 					'name' => 'Penerbit buku',
-					'required' => TRUE
+					'required' => FALSE
 				)
 			)
 		?>

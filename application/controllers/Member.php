@@ -9,6 +9,10 @@ class Member extends CI_Controller {
 	{
 		parent::__construct();
 
+		$this->load->model('setting_model');
+		$this->load->model('auth_model');
+		$this->load->model('member_model');
+
 		// Middleware
 		if ($this->session->has_userdata('auth_token') === FALSE OR $this->auth_model->user_token_exists($this->session->userdata('auth_token')) === FALSE)
 		{
@@ -20,6 +24,7 @@ class Member extends CI_Controller {
 
 	public function index()
 	{
+		// Members view
 		$data['settings'] = $this->settings;
 		$data['title'] = 'Data Anggota';
 		$data['members'] = $this->member_model->all();
@@ -34,6 +39,7 @@ class Member extends CI_Controller {
 
 	public function create()
 	{
+		// Form validation rules
 		$this->form_validation->set_rules(
 			'fullname', 'nama anggota',
 			array('max_length[64]', 'required', 'trim')
@@ -48,15 +54,17 @@ class Member extends CI_Controller {
 		);
 		$this->form_validation->set_rules(
 			'phone_number', 'nomor telepon anggota',
-			array('max_length[16]', 'numeric', 'regex_match[/(08\d{2})(\d{4})(\d{1,})/]', 'required', 'trim')
+			array('max_length[16]', 'numeric', 'regex_match[/^(08\d{2})(\d{4})(\d{1,})$/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
 			'address', 'alamat anggota',
 			array('trim')
 		);
 
+		// Run validation
 		if ($this->form_validation->run() === FALSE)
 		{
+			// Member create form
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Tambah Data Anggota';
 			$data['last_id'] = $this->member_model->last();
@@ -70,6 +78,7 @@ class Member extends CI_Controller {
 		}
 		else
 		{
+			// Create member data
 			$this->member_model->create();
 
 			redirect('anggota');
@@ -78,6 +87,7 @@ class Member extends CI_Controller {
 
 	public function update($id)
 	{
+		// Check member data exists
 		if ($this->member_model->exists($id) === FALSE)
 		{
 			show_404();
@@ -85,6 +95,7 @@ class Member extends CI_Controller {
 			return;
 		}
 
+		// Form validation rules
 		$this->form_validation->set_rules(
 			'fullname', 'nama anggota',
 			array('max_length[64]', 'required', 'trim')
@@ -99,15 +110,17 @@ class Member extends CI_Controller {
 		);
 		$this->form_validation->set_rules(
 			'phone_number', 'nomor telepon anggota',
-			array('max_length[16]', 'numeric', 'regex_match[/(08\d{2})(\d{4})(\d{1,})/]', 'required', 'trim')
+			array('max_length[16]', 'numeric', 'regex_match[/^(08\d{2})(\d{4})(\d{1,})$/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
 			'address', 'alamat anggota',
 			array('trim')
 		);
 
+		// Run validation
 		if ($this->form_validation->run() === FALSE)
 		{
+			// Member update form
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Ubah Data Anggota';
 			$data['member'] = $this->member_model->get($id);
@@ -121,6 +134,7 @@ class Member extends CI_Controller {
 		}
 		else
 		{
+			// Update member data
 			$this->member_model->update($id);
 
 			redirect('anggota');
@@ -129,6 +143,7 @@ class Member extends CI_Controller {
 
 	public function delete()
 	{
+		// Check member data exists
 		if ($this->member_model->exists($this->input->post('id')) === FALSE)
 		{
 			show_404();
@@ -136,6 +151,7 @@ class Member extends CI_Controller {
 			return;
 		}
 
+		// Delete member data
 		$this->member_model->delete();
 
 		redirect('anggota');
@@ -143,6 +159,7 @@ class Member extends CI_Controller {
 
 	public function report()
 	{
+		// Report view
 		$data['settings'] = $this->settings;
 		$data['settings']['application_theme'] = 'dark';
 		$data['title'] = 'Laporan Data Anggota';

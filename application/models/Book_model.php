@@ -5,8 +5,9 @@ class Book_model extends CI_Model {
 
 	public function last()
 	{
+		// Parse book ID
 		$result = $this->db->get('books')->last_row('array');
-		$last_id = intval(substr($result['id'], 1));
+		$last_id = intval(substr($result['id'] ?? 'B0000000', 1));
 
 		return 'B' . str_repeat(0, 7 - strlen($last_id)) . ++$last_id;
 	}
@@ -34,6 +35,7 @@ class Book_model extends CI_Model {
 
 	public function create()
 	{
+		// Book data
 		$book_data = array(
 			'id' => $this->last(),
 			'title' => $this->input->post('title'),
@@ -44,6 +46,7 @@ class Book_model extends CI_Model {
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
+		// Create book data
 		$this->db->trans_start();
 		$this->db->set($book_data);
 		$this->db->insert('books');
@@ -75,6 +78,7 @@ class Book_model extends CI_Model {
 
 	public function update($id)
 	{
+		// Book data
 		$book_data = array(
 			'title' => $this->input->post('title'),
 			'publication_year' => (int) $this->input->post('publication_year'),
@@ -83,6 +87,7 @@ class Book_model extends CI_Model {
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
+		// Update book data
 		$this->db->trans_start();
 		$this->db->set($book_data);
 		$this->db->where('id', $id);
@@ -117,6 +122,7 @@ class Book_model extends CI_Model {
 
 	public function delete()
 	{
+		// Delete book data
 		$this->db->trans_start();
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->delete('books');

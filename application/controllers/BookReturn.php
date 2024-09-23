@@ -9,6 +9,11 @@ class BookReturn extends CI_Controller {
 	{
 		parent::__construct();
 
+		$this->load->model('setting_model');
+		$this->load->model('auth_model');
+		$this->load->model('lending_model');
+		$this->load->model('return_model');
+
 		// Middleware
 		if ($this->session->has_userdata('auth_token') === FALSE OR $this->auth_model->user_token_exists($this->session->userdata('auth_token')) === FALSE)
 		{
@@ -20,6 +25,7 @@ class BookReturn extends CI_Controller {
 
 	public function index()
 	{
+		// Returns view
 		$data['settings'] = $this->settings;
 		$data['title'] = 'Data Pengembalian';
 		$data['returns'] = $this->return_model->all();
@@ -34,17 +40,20 @@ class BookReturn extends CI_Controller {
 
 	public function create()
 	{
+		// Form validation rules
 		$this->form_validation->set_rules(
 			'id', 'transaksi peminjaman',
 			array('exact_length[8]', 'regex_match[/^T\d{7}$/]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
 			'checkout_date', 'tanggal pengembalian',
-			array('exact_length[10]', 'regex_match[/((19|20)\d{2})-(0[1-9]|1[1,2])-(0[1-9]|[12][0-9]|3[01])/]', 'required', 'trim')
+			array('exact_length[10]', 'regex_match[/^((19|20)\d{2})-(0[1-9]|1[1,2])-(0[1-9]|[12][0-9]|3[01])$/]', 'required', 'trim')
 		);
 
+		// Run validation
 		if ($this->form_validation->run() === FALSE)
 		{			
+			// Return create form
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Tambah Data Pengembalian';
 			$data['lendings'] = $this->lending_model->all();
@@ -58,6 +67,7 @@ class BookReturn extends CI_Controller {
 		}
 		else
 		{
+			// Create return data
 			$this->return_model->create($this->settings['library_fines']);
 
 			redirect('pengembalian');
@@ -66,6 +76,7 @@ class BookReturn extends CI_Controller {
 
 	public function update($id)
 	{
+		// Check return data exists
 		if ($this->return_model->exists($id) === FALSE)
 		{
 			show_404();
@@ -73,13 +84,16 @@ class BookReturn extends CI_Controller {
 			return;
 		}
 
+		// Form validation rules
 		$this->form_validation->set_rules(
 			'checkout_date', 'tanggal pengembalian',
-			array('exact_length[10]', 'regex_match[/((19|20)\d{2})-(0[1-9]|1[1,2])-(0[1-9]|[12][0-9]|3[01])/]', 'required', 'trim')
+			array('exact_length[10]', 'regex_match[/^((19|20)\d{2})-(0[1-9]|1[1,2])-(0[1-9]|[12][0-9]|3[01])$/]', 'required', 'trim')
 		);
 
+		// Run validation
 		if ($this->form_validation->run() === FALSE)
 		{			
+			// Return update form
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Ubah Data Pengembalian';
 			$data['return'] = $this->return_model->get($id);
@@ -93,6 +107,7 @@ class BookReturn extends CI_Controller {
 		}
 		else
 		{
+			// Update return
 			$this->return_model->update($id, $this->settings['library_fines']);
 
 			redirect('pengembalian');
@@ -102,6 +117,7 @@ class BookReturn extends CI_Controller {
 
 	public function delete()
 	{
+		// Check return data exists
 		if ($this->return_model->exists($this->input->post('id')) === FALSE)
 		{
 			show_404();
@@ -109,6 +125,7 @@ class BookReturn extends CI_Controller {
 			return;
 		}
 
+		// Delete return data
 		$this->return_model->delete();
 
 		redirect('pengembalian');
@@ -116,6 +133,7 @@ class BookReturn extends CI_Controller {
 
 	public function report()
 	{
+		// Report view
 		$data['settings'] = $this->settings;
 		$data['settings']['application_theme'] = 'dark';
 		$data['title'] = 'Laporan Data Pengembalian';

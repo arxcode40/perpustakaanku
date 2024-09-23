@@ -9,6 +9,9 @@ class Auth extends CI_Controller {
 	{
 		parent::__construct();
 
+		$this->load->model('setting_model');
+		$this->load->model('auth_model');
+
 		$this->settings = $this->setting_model->get();
 	}
 
@@ -43,6 +46,7 @@ class Auth extends CI_Controller {
 		// Run validation
 		if ($this->form_validation->run() === FALSE)
 		{
+			// Auth view
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Masuk';
 
@@ -100,7 +104,7 @@ class Auth extends CI_Controller {
 				redirect(uri_string());
 			}
 
-			// Set auth
+			// Set auth token
 			$this->session->unset_tempdata('login_attempts');
 
 			unset($auth['password']);
@@ -113,7 +117,7 @@ class Auth extends CI_Controller {
 
 	public function logout()
 	{
-		// Unset auth
+		// Unset auth token
 		$this->session->unset_userdata('auth_token');
 
 		redirect('masuk');

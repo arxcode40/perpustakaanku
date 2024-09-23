@@ -9,6 +9,10 @@ class Book extends CI_Controller {
 	{
 		parent::__construct();
 
+		$this->load->model('setting_model');
+		$this->load->model('auth_model');
+		$this->load->model('book_model');
+
 		// Middleware
 		if ($this->session->has_userdata('auth_token') === FALSE OR $this->auth_model->user_token_exists($this->session->userdata('auth_token')) === FALSE)
 		{
@@ -20,6 +24,7 @@ class Book extends CI_Controller {
 
 	public function index()
 	{
+		// Books view
 		$data['settings'] = $this->settings;
 		$data['title'] = 'Data Buku';
 		$data['books'] = $this->book_model->all();
@@ -34,13 +39,14 @@ class Book extends CI_Controller {
 
 	public function create()
 	{
+		// Form validation rules
 		$this->form_validation->set_rules(
 			'title', 'judul buku',
 			array('max_length[64]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
 			'publication_year', 'tahun terbit buku',
-			array('exact_length[4]', 'required', 'trim')
+			array('exact_length[4]', 'integer', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
 			'author', 'pengarang buku',
@@ -51,8 +57,10 @@ class Book extends CI_Controller {
 			array('max_length[64]', 'trim')
 		);
 
+		// Run validation
 		if ($this->form_validation->run() === FALSE)
 		{
+			// Book create form
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Tambah Data Buku';
 			$data['last_id'] = $this->book_model->last();
@@ -66,6 +74,7 @@ class Book extends CI_Controller {
 		}
 		else
 		{
+			// Create book data
 			$this->book_model->create();
 
 			redirect('buku');
@@ -74,6 +83,7 @@ class Book extends CI_Controller {
 
 	public function update($id)
 	{
+		// Check book data exists
 		if ($this->book_model->exists($id) === FALSE)
 		{
 			show_404();
@@ -81,13 +91,14 @@ class Book extends CI_Controller {
 			return;
 		}
 
+		// Form validation rules
 		$this->form_validation->set_rules(
 			'title', 'judul buku',
 			array('max_length[64]', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
 			'publication_year', 'tahun terbit buku',
-			array('exact_length[4]', 'required', 'trim')
+			array('exact_length[4]', 'integer', 'required', 'trim')
 		);
 		$this->form_validation->set_rules(
 			'author', 'pengarang buku',
@@ -98,8 +109,10 @@ class Book extends CI_Controller {
 			array('max_length[64]', 'trim')
 		);
 
+		// Run validation
 		if ($this->form_validation->run() === FALSE)
 		{
+			// Book update form
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Ubah Data Buku';
 			$data['book'] = $this->book_model->get($id);
@@ -113,6 +126,7 @@ class Book extends CI_Controller {
 		}
 		else
 		{
+			// Update book data
 			$this->book_model->update($id);
 
 			redirect('buku');
@@ -121,6 +135,7 @@ class Book extends CI_Controller {
 
 	public function delete()
 	{
+		// Check book data exists
 		if ($this->book_model->exists($this->input->post('id')) === FALSE)
 		{
 			show_404();
@@ -128,6 +143,7 @@ class Book extends CI_Controller {
 			return;
 		}
 
+		// Delete book data
 		$this->book_model->delete();
 
 		redirect('buku');
@@ -135,6 +151,7 @@ class Book extends CI_Controller {
 
 	public function report()
 	{
+		// Report view
 		$data['settings'] = $this->settings;
 		$data['settings']['application_theme'] = 'dark';
 		$data['title'] = 'Laporan Data Buku';

@@ -32,7 +32,7 @@ class Migration_Add_users extends CI_Migration {
     );
     $this->dbforge->add_key('id', TRUE);
     $this->dbforge->create_table(
-    	'test', TRUE, array(
+    	'users', TRUE, array(
 	    	'CHARACTER SET' => 'utf8mb4',
 	    	'COLLATE' => 'utf8mb4_unicode_ci',
 	    	'ENGINE' => 'InnoDB'

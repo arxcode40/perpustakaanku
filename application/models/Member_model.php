@@ -5,8 +5,9 @@ class Member_model extends CI_Model {
 
 	public function last()
 	{
+		// Parse member ID
 		$result = $this->db->get('members')->last_row('array');
-		$last_id = intval(substr($result['id'], 1));
+		$last_id = intval(substr($result['id'] ?? 'M0000000', 1));
 
 		return 'M' . str_repeat(0, 7 - strlen($last_id)) . ++$last_id;
 	}
@@ -34,6 +35,7 @@ class Member_model extends CI_Model {
 
 	public function create()
 	{
+		// Member data
 		$member_data = array(
 			'id' => $this->last(),
 			'fullname' => $this->input->post('fullname'),
@@ -45,6 +47,7 @@ class Member_model extends CI_Model {
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
+		// Create member data
 		$this->db->trans_start();
 		$this->db->set($member_data);
 		$this->db->insert('members');
@@ -76,6 +79,7 @@ class Member_model extends CI_Model {
 
 	public function update($id)
 	{
+		// Member data
 		$member_data = array(
 			'fullname' => $this->input->post('fullname'),
 			'gender' => $this->input->post('gender'),
@@ -85,6 +89,7 @@ class Member_model extends CI_Model {
 			'updated_at' => mdate('%Y-%m-%d %H:%i:%s'),
 		);
 
+		// Update member data
 		$this->db->trans_start();
 		$this->db->set($member_data);
 		$this->db->where('id', $id);
@@ -119,6 +124,7 @@ class Member_model extends CI_Model {
 
 	public function delete()
 	{
+		// Delete member data
 		$this->db->trans_start();
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->delete('members');

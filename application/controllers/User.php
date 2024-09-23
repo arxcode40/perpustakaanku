@@ -9,6 +9,10 @@ class User extends CI_Controller {
 	{
 		parent::__construct();
 
+		$this->load->model('setting_model');
+		$this->load->model('auth_model');
+		$this->load->model('user_model');
+
 		// Middleware
 		if ($this->session->has_userdata('auth_token') === FALSE OR $this->auth_model->user_token_exists($this->session->userdata('auth_token')) === FALSE)
 		{
@@ -22,6 +26,7 @@ class User extends CI_Controller {
 	{
 		$data['profile'] = $this->user_model->get($this->session->userdata('auth_token'));
 
+		// Form validation rules
 		if ($this->input->post('username') === $data['profile']['username'])
 		{
 			$rules['username'] = array('max_length[16]', 'min_length[8]', 'regex_match[/^[a-z\d]+$/]', 'required', 'trim');
@@ -60,8 +65,10 @@ class User extends CI_Controller {
 		);
 		$this->form_validation->set_rules('confirm_password', 'konfirmasi kata sandi baru', $rules['confirm_password']);
 
+		// Run validation
 		if ($this->form_validation->run() === FALSE)
 		{
+			// User profile form
 			$data['settings'] = $this->settings;
 			$data['title'] = 'Profil Saya';
 
@@ -74,8 +81,10 @@ class User extends CI_Controller {
 		}
 		else
 		{
+			// Check password field filled
 			if ($this->form_validation->required($this->input->post('current_password')) === TRUE)
 			{
+				// Verify password
 				if (password_verify($this->input->post('current_password'), $data['profile']['password']) === FALSE)
 				{
 					$this->session->set_flashdata(
@@ -90,6 +99,7 @@ class User extends CI_Controller {
 					redirect(uri_string());
 				}
 
+				// Check outdated password
 				if ($this->input->post('current_password') === $this->input->post('new_password'))
 				{
 					$this->session->set_flashdata(
@@ -105,8 +115,10 @@ class User extends CI_Controller {
 				}
 			}
 
+			// Save profile user
 			$this->user_model->set($this->session->userdata('auth_token'));
 
+			// Set auth token
 			$profile = $this->user_model->get($this->session->userdata('auth_token'));
 			unset($profile['password']);
 			$profile['logged_at'] = mdate('%Y-%m-%d %H:%i:%s');

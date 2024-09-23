@@ -30,6 +30,7 @@
 
 		<!-- Lendings datatable -->
 		<?php $thead = array('#', 'Kode', 'Nama', 'Judul', 'Tanggal pinjam', 'Tanggal kembali', 'Aksi') ?>
+		<?php $tbody = array() ?>
 		<?php foreach ($lendings as $index => $lending): ?>
 			<?php $tbody[] = array($index + 1, $lending['id'], $lending['fullname'], $lending['title'], nice_date($lending['lending_date'], 'd M Y'), nice_date($lending['return_date'], 'd M Y'), $lending['id']) ?>
 		<?php endforeach ?>
@@ -43,7 +44,7 @@
 				)
 			)
 		?>
-		<?php unset($tbody) ?>
+		<?php $tbody = array() ?>
 	</div>
 
 	<!-- Report table -->
