@@ -3,7 +3,7 @@
 	<div class="align-items-center card-header d-flex">
 		<h5 class="mb-0 me-auto">
 			<i class="bi bi-table"></i>
-			Tabel <?= $name ?>
+			Tabel <?= html_escape($name) ?>
 		</h5>
 		<div class="dropdown me-1">
 			<button class="btn btn-secondary btn-sm dropdown-toggle shadow" data-bs-toggle="dropdown" type="button">
@@ -20,32 +20,32 @@
 					</h6>
 				</li>
 				<li>
-					<button class="dropdown-item" onclick="tableToCSV('<?= $settings['application_name'] ?>', '<?= $title ?>', '<?= mdate('%Y%m%d%H%i%s') ?>');" type="button">
+					<button class="dropdown-item" onclick="tableToCSV('<?= html_escape($settings['application_name']) ?>', '<?= html_escape($title) ?>', '<?= mdate('%Y%m%d%H%i%s') ?>');" type="button">
 						<i class="bi bi-filetype-csv"></i>
 						CSV
 					</button>
 				</li>
 				<li>
-					<button class="dropdown-item" onclick="tableToExcel('<?= $settings['application_name'] ?>', '<?= $title ?>', '<?= mdate('%Y%m%d%H%i%s') ?>');" type="button">
+					<button class="dropdown-item" onclick="tableToExcel('<?= html_escape($settings['application_name']) ?>', '<?= html_escape($title) ?>', '<?= mdate('%Y%m%d%H%i%s') ?>');" type="button">
 						<i class="bi bi-filetype-xlsx"></i>
 						Excel
 					</button>
 				</li>
 				<li>
-					<button class="dropdown-item" onclick="tableToPDF('<?= $settings['application_name'] ?>', '<?= $title ?>', '<?= mdate('%Y%m%d%H%i%s') ?>');" type="button">
+					<button class="dropdown-item" onclick="tableToPDF('<?= html_escape($settings['application_name']) ?>', '<?= html_escape($title) ?>', '<?= mdate('%Y%m%d%H%i%s') ?>');" type="button">
 						<i class="bi bi-filetype-pdf"></i>
 						PDF
 					</button>
 				</li>
 				<li>
-					<a class="dropdown-item" href="<?= base_url(array($name, 'laporan')) ?>" target="_blank">
+					<a class="dropdown-item" href="<?= base_url(array(html_escape($name), 'laporan')) ?>" target="_blank">
 						<i class="bi bi-printer-fill"></i>
 						Cetak
 					</a>
 				</li>
 			</ul>
 		</div>
-		<a class="btn btn-primary btn-sm shadow" href="<?= base_url(array($name, 'tambah')) ?>">
+		<a class="btn btn-primary btn-sm shadow" href="<?= base_url(array(html_escape($name), 'tambah')) ?>">
 			<i class="bi bi-plus-lg"></i>
 			<span class="d-none d-sm-inline">Tambah</span>
 		</a>
@@ -59,7 +59,7 @@
 				<thead>
 					<tr class="align-middle">
 						<?php foreach ($heads as $head): ?>
-							<th class="text-start" scope="col"><?= $head ?></th>
+							<th class="text-start" scope="col"><?= html_escape($head) ?></th>
 						<?php endforeach ?>
 					</tr>
 				</thead>
@@ -73,7 +73,7 @@
 									<th class="text-start" scope="row"><?= html_escape($column) ?></th>
 								<?php elseif ($index + 1 === count($row)): ?>
 									<td class="text-nowrap">
-										<a class="btn btn-primary btn-sm shadow" href="<?= base_url(array($name, 'ubah', html_escape($column))) ?>">
+										<a class="btn btn-primary btn-sm shadow" href="<?= base_url(array(html_escape($name), 'ubah', html_escape($column))) ?>">
 											<i class="bi bi-pencil-square"></i>
 											<span class="d-none d-sm-inline">Ubah</span>
 										</a>

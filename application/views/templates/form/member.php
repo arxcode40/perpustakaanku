@@ -58,7 +58,7 @@
 			</div>
 			<div class="form-check form-check-inline">
 				<input class="form-check-input <?= form_error('gender') === '' ?: 'is-invalid' ?>" <?= set_radio('gender', 'Perempuan', isset($member['gender']) === FALSE ? FALSE : $member['gender'] === 'Perempuan') ?> id="female" name="gender" type="radio" value="Perempuan" />
-				<label class="form-check-label" for="female"><?= 'Perempuan' ?></label>
+				<label class="form-check-label" for="female">Perempuan</label>
 			</div>
 			<?= form_error('gender', '<div class="invalid-feedback">', '</div>') ?>
 		</div>

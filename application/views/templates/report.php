@@ -1,14 +1,14 @@
 <div hidden="hidden">
 	<div class="container py-3 text-body-emphasis" data-bs-theme="light" id="reportPage">
-		<h4 class="mb-0 text-center">Laporan <?= $settings['application_name'] ?></h4>
-		<h4 class="mb-3 text-center"><?= $title ?></h4>
+		<h4 class="mb-0 text-center">Laporan <?= html_escape($settings['application_name']) ?></h4>
+		<h4 class="mb-3 text-center"><?= html_escape($title) ?></h4>
 
 		<table class="align-middle mb-0 table table-borderless table-printed table-sm w-100" id="reportTable">
 			<!-- Table header -->
 			<thead>
 				<tr class="align-middle table-dark">
 					<?php foreach ($heads as $head): ?>
-						<th class="text-start" scope="col"><?= $head ?></th>
+						<th class="text-start" scope="col"><?= html_escape($head) ?></th>
 					<?php endforeach ?>
 				</tr>
 			</thead>

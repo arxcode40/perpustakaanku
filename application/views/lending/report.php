@@ -1,7 +1,7 @@
 <main class="flex-grow-1">
 	<div class="container py-3 text-body-emphasis">
-		<h4 class="mb-0 text-center">Laporan <?= $settings['application_name'] ?></h4>
-		<h4 class="mb-3 text-center"><?= str_replace('Laporan ', '', $title) ?></h4>
+		<h4 class="mb-0 text-center">Laporan <?= html_escape($settings['application_name']) ?></h4>
+		<h4 class="mb-3 text-center"><?= html_escape(str_replace('Laporan ', '', $title)) ?></h4>
 
 		<table class="align-middle border-black mb-0 table table-bordered table-sm w-100">
 			<!-- Table header -->
@@ -18,10 +18,9 @@
 
 			<!-- Table body -->
 			<tbody class="table-group-divider">
-				<?php $i = 1 ?>
-				<?php foreach ($lendings as $lending): ?>
+				<?php foreach ($lendings as $index => $lending): ?>
 					<tr class="align-middle">
-						<th class="text-start" scope="row"><?= $i++ ?></th>
+						<th class="text-start" scope="row"><?= $index + 1 ?></th>
 						<td><?= html_escape($lending['id']) ?></td>
 						<td><?= html_escape($lending['fullname']) ?></td>
 						<td><?= html_escape($lending['title']) ?></td>

@@ -12,7 +12,7 @@
 				)
 			?>
 			<i class="bi bi-<?= $icon[$operation] ?>"></i>
-			<?= $operation ?>
+			<?= html_escape($operation) ?>
 		</button>
 		<button class="btn btn-secondary shadow" type="reset">
 			<i class="bi bi-x-lg"></i>

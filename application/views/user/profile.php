@@ -28,7 +28,7 @@
 			)
 		?>
 
-		<!-- My profil form -->
+		<!-- User profil form -->
 		<?php
 			$this->load->view(
 				'templates/form_open',
@@ -40,20 +40,34 @@
 			)
 		?>
 			<div class="mb-3 row">
-				<label class="col-md-4 col-lg-3 col-form-label d-md-flex" for="username">
-					Nama pengguna<b class="text-danger">*</b>
-					<span class="d-none d-md-block fw-medium ms-auto">:</span>
-				</label>
+				<?php
+					$this->load->view(
+						'templates/label',
+						array(
+							'tag' => 'label',
+							'key' => 'username',
+							'name' => 'Nama pengguna',
+							'required' => TRUE
+						)
+					)
+				?>
 				<div class="col-md-8 col-lg-9">
 					<input autocapitalize="off" autocomplete="username" autofocus="autofocus" class="form-control <?= form_error('username') === '' ?: 'is-invalid' ?>" id="username" name="username" placeholder="Masukkan nama pengguna" type="text" value="<?= html_escape(set_value('username', $profile['username'])) ?>" />
 					<?= form_error('username', '<div class="invalid-feedback">', '</div>') ?>
 				</div>
 			</div>
 			<div class="mb-3 row">
-				<label class="col-md-4 col-lg-3 col-form-label d-md-flex" for="currentPassword">
-					Kata sandi saat ini
-					<span class="d-none d-md-block fw-medium ms-auto">:</span>
-				</label>
+				<?php
+					$this->load->view(
+						'templates/label',
+						array(
+							'tag' => 'label',
+							'key' => 'currentPassword',
+							'name' => 'Kata sandi saat ini',
+							'required' => FALSE
+						)
+					)
+				?>
 				<div class="col-md-8 col-lg-9">
 					<div class="has-validation input-group">
 						<input autocomplete="current-password" class="form-control <?= form_error('current_password') === '' ?: 'is-invalid' ?>" id="currentPassword" name="current_password" placeholder="Masukkan kata sandi saat ini" type="password" />
@@ -65,10 +79,17 @@
 				</div>
 			</div>
 			<div class="mb-3 row">
-				<label class="col-md-4 col-lg-3 col-form-label d-md-flex" for="newPassword">
-					Kata sandi baru
-					<span class="d-none d-md-block fw-medium ms-auto">:</span>
-				</label>
+				<?php
+					$this->load->view(
+						'templates/label',
+						array(
+							'tag' => 'label',
+							'key' => 'newPassword',
+							'name' => 'Kata sandi baru',
+							'required' => FALSE
+						)
+					)
+				?>
 				<div class="col-md-8 col-lg-9">
 					<div class="has-validation input-group">
 						<input autocomplete="new-password" class="form-control <?= form_error('new_password') === '' ?: 'is-invalid' ?>" id="newPassword" name="new_password" placeholder="Masukkan kata sandi baru" type="password" />
@@ -80,10 +101,17 @@
 				</div>
 			</div>
 			<div class="row">
-				<label class="col-md-4 col-lg-3 col-form-label d-md-flex" for="confirmPassword">
-					Konfirmasi kata sandi baru
-					<span class="d-none d-md-block fw-medium ms-auto">:</span>
-				</label>
+				<?php
+					$this->load->view(
+						'templates/label',
+						array(
+							'tag' => 'label',
+							'key' => 'confirmPassword',
+							'name' => 'Konfirmasi kata sandi baru',
+							'required' => FALSE
+						)
+					)
+				?>
 				<div class="col-md-8 col-lg-9">
 					<div class="has-validation input-group">
 						<input autocomplete="new-password" class="form-control <?= form_error('confirm_password') === '' ?: 'is-invalid' ?>" id="confirmPassword" name="confirm_password" placeholder="Masukkan konfirmasi kata sandi baru" type="password" />
