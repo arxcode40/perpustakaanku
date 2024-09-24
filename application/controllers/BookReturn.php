@@ -8,9 +8,7 @@ class BookReturn extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-
-		$this->load->model('setting_model');
-		$this->load->model('auth_model');
+		
 		$this->load->model('lending_model');
 		$this->load->model('return_model');
 

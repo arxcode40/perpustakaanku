@@ -9,8 +9,6 @@ class BookLending extends CI_Controller {
 	{
 		parent::__construct();
 
-		$this->load->model('setting_model');
-		$this->load->model('auth_model');
 		$this->load->model('member_model');
 		$this->load->model('book_model');
 		$this->load->model('lending_model');

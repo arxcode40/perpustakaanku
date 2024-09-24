@@ -9,9 +9,6 @@ class Auth extends CI_Controller {
 	{
 		parent::__construct();
 
-		$this->load->model('setting_model');
-		$this->load->model('auth_model');
-
 		$this->settings = $this->setting_model->get();
 	}
 

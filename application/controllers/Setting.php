@@ -6,8 +6,6 @@ class Setting extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('setting_model');
-		$this->load->model('auth_model');
 
 		// Middleware
 		if ($this->session->has_userdata('auth_token') === FALSE OR $this->auth_model->user_token_exists($this->session->userdata('auth_token')) === FALSE)
