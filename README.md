@@ -1,6 +1,6 @@
 # Apa itu PerpustakaanKu
 
-PerpustakaanKu adalah sebuah aplikasi perpustakaan yang dibangun dan digunakan untuk memudahkan dalam mengelola data anggota, data buku, data rak, data peminjaman, data pengembalian, dan lain sebagainya.
+PerpustakaanKu adalah sebuah aplikasi perpustakaan yang dibangun dan digunakan untuk memudahkan dalam mengelola data anggota, data buku, data peminjaman, data pengembalian, dan lain sebagainya.
 
 **Persyaratan Sistem**
 
