@@ -30,7 +30,7 @@ PerpustakaanKu adalah sebuah aplikasi perpustakaan yang dibangun dan digunakan u
 - Data Buku
 - Data Peminjaman
 - Data Pengembalian
-- Data Laporan (CSV, Excel, PDF, dan Cetak)
+- Data Laporan (CSV, Excel, PDF, dan cetak)
 - Pengaturan Profil
-- Pengaturan Aplikasi
+- Pengaturan Aplikasi (Nama aplikasi, tema aplikasi, dan denda perpustakaan)
 - dan lainnya.
